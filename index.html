@@ -1,204 +1,184 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Un comunicado del Vizconde Federico</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Renovación del Año</title>
 
-        body {
-            background-color: #f5ebe0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            font-family: 'Playfair Display', serif;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        /* Estilo del Sobre */
-        #envelope-container {
-            cursor: pointer;
-            transition: transform 0.5s;
-            text-align: center;
-            z-index: 10;
-        }
+body{
+    background:#000;
+    overflow-x:hidden;
+}
 
-        #envelope-container:hover {
-            transform: scale(1.05);
-        }
+/* PORTADA */
+.portada{
+    position:relative;
+    width:100%;
+    height:100vh;
+    background:url("./portada.jpeg") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:transform 0.6s ease;
+}
 
-        .envelope {
-            width: 300px;
-            height: 200px;
-            background-color: #d7ccc8;
-            position: relative;
-            border-radius: 5px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin: 0 auto;
-        }
+.portada::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    transition:background 0.5s;
+}
 
-        .seal {
-            width: 65px;
-            height: 65px;
-            background-color: #8b0000;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 2px solid #5d0000;
-            box-shadow: 0 0 15px rgba(0,0,0,0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ffd700;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            font-size: 1.2rem;
-            z-index: 2;
-        }
+.portada:hover{
+    transform:scale(1.02);
+}
 
-        /* Estilo de la Carta */
-        #letter {
-            display: none;
-            background-color: #fff9f0;
-            width: 90%;
-            max-width: 450px;
-            padding: 40px;
-            border: 2px solid #5d4037;
-            box-shadow: 0 0 25px rgba(0,0,0,0.15);
-            text-align: center;
-            animation: fadeIn 1.2s ease-out;
-            position: relative;
-        }
+.titulo-overlay{
+    position:relative;
+    z-index:2;
+    color:white;
+    text-align:center;
+    font-size:clamp(24px, 5vw, 50px);
+    font-weight:600;
+    letter-spacing:2px;
+    animation:fadeIn 2s ease forwards;
+}
 
-        .header h1 { 
-            font-family: 'Cinzel', serif; 
-            border-bottom: 2px solid #5d4037; 
-            letter-spacing: 3px; 
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-        }
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    z-index: 3;
+    background:rgba(0,0,0,0.85);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 0.5s ease;
+}
 
-        .date { font-size: 0.8rem; text-transform: uppercase; margin-bottom: 20px; display: block; }
+.modal.active{
+    opacity:1;
+    visibility:visible;
+}
 
-        .salutation { 
-            font-family: 'Great Vibes', cursive; 
-            font-size: 2.8rem; 
-            margin-bottom: 20px; 
-            display: block; 
-            color: #3e2723;
-        }
+.contenido{
+    background:white;
+    max-width:800px;
+    width:100%;
+    padding:40px 30px;
+    border-radius:20px;
+    text-align:center;
+    animation:slideUp 0.8s ease;
+}
 
-        .content p { line-height: 1.6; color: #3e2723; font-size: 1.05rem; }
+.contenido h1{
+    font-size:clamp(24px, 4vw, 38px);
+    margin-bottom:20px;
+}
 
-        .question { 
-            font-family: 'Cinzel', serif; 
-            font-weight: bold; 
-            font-size: 1.2rem; 
-            margin: 25px 0; 
-            border-top: 1px solid #d7ccc8; 
-            border-bottom: 1px solid #d7ccc8; 
-            padding: 15px 0; 
-            color: #2c1e1a;
-        }
-        
-        .btn-accept {
-            background-color: #5d4037;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            font-family: 'Cinzel', serif;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: 0.3s;
-        }
+.contenido p{
+    font-size:clamp(16px, 2.5vw, 20px);
+    line-height:1.6;
+    margin-bottom:20px;
+}
 
-        .btn-accept:hover { background-color: #8d6e63; letter-spacing: 1px; }
+.cerrar{
+    margin-top:10px;
+    background:#c40000;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:50px;
+    cursor:pointer;
+    transition:background 0.3s;
+}
 
-        /* Pantalla Final */
-        #reward {
-            display: none;
-            text-align: center;
-            animation: scaleUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
+.cerrar:hover{
+    background:#900000;
+}
 
-        #reward h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: #8b0000; margin-bottom: 10px; }
+/* ANIMACIONES */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes scaleUp { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes slideUp{
+    from{transform:translateY(50px); opacity:0;}
+    to{transform:translateY(0); opacity:1;}
+}
 
-        .confetti { position: absolute; width: 12px; height: 12px; border-radius: 50%; pointer-events: none; }
-    </style>
+/* RESPONSIVE EXTRA */
+@media(max-width:600px){
+    .contenido{
+        padding:25px 20px;
+    }
+}
+
+</style>
 </head>
 <body>
 
-    <div id="envelope-container" onclick="openLetter()">
-        <div class="envelope">
-            <div class="seal">VF</div>
-        </div>
-        <p style="font-family: 'Cinzel'; margin-top: 20px; color: #5d4037; letter-spacing: 2px;">Para: Lady Ansandri</p>
-        <small style="color: #8d6e63;">(Haz clic para romper el sello)</small>
+<div class="portada" onclick="abrirModal()">
+    <div class="titulo-overlay">
+        LA RENOVACIÓN DEL AÑO
+        <br><small style="font-size:18px;">(Tocar para ver comunicado)</small>
     </div>
+</div>
 
-    <div id="letter">
-        <div class="header">
-            <h1>SOCIETY PAPER</h1>
-            <span class="date">Londres, 14 de Febrero</span>
-        </div>
-        <div class="content">
-            <span class="salutation">Mi queridísima Lady Ansandri,</span>
-            <p>Se rumorea en todo el <i>ton</i> que el <b>Vizconde Federico</b> ha perdido finalmente la razón, pues su corazón ya no le pertenece a él, sino enteramente a usted.</p>
-            <p>Mi afecto no conoce límites y mi admiración es el secreto peor guardado de la temporada. La amo y la quiero con una devoción que las palabras apenas pueden capturar.</p>
-            <div class="question">¿Me concedería el honor de ser mi San Valentín?</div>
-            <button class="btn-accept" onclick="showReward()">Aceptar con Honor</button>
-        </div>
+<div class="modal" id="modal">
+    <div class="contenido">
+        <h1>LA RENOVACIÓN DEL AÑO</h1>
+        <p>
+        Se informa a toda la comunidad que el jugador estrella, <strong>Mateo Salinas</strong>, 
+        ha decidido renovar su contrato con el equipo <strong>Mi Monumental Corazón</strong> 
+        por una temporada más.
+        </p>
+
+        <p>
+        Tras alcanzar los 24 años en un estado físico e intelectual impecable 
+        (confirmado por sus proyecciones de Actuario y el control de calidad de Renault), 
+        el club ha decidido continuar con su jugador estrella.
+        </p>
+
+        <p>
+        Como prima por fichaje, se ha programado un almuerzo de gala para celebrar este acuerdo histórico.
+        </p>
+
+        <p>
+        <strong>Sede:</strong> Cuenta Ganado, Parque Leloir.
+        </p>
+
+        <p>
+        Confirmar asistencia con un beso.
+        </p>
+
+        <button class="cerrar" onclick="cerrarModal()">Cerrar</button>
     </div>
+</div>
 
-    <div id="reward">
-        <h2>¡Es un Sí!</h2>
-        <p style="font-size: 1.3rem; color: #3e2723;">Has hecho al <b>Vizconde Federico</b> el hombre más afortunado del reino.</p>
-        <div style="font-size: 60px; margin: 20px 0;">💎🌹🥂</div>
-        <p style="font-style: italic; color: #5d4037;">Premio: Un beso eterno y una cita inolvidable reservada solo para ti.</p>
-    </div>
+<script>
+function abrirModal(){
+    document.getElementById("modal").classList.add("active");
+}
 
-    <script>
-        function openLetter() {
-            document.getElementById('envelope-container').style.display = 'none';
-            document.getElementById('letter').style.display = 'block';
-        }
+function cerrarModal(){
+    document.getElementById("modal").classList.remove("active");
+}
+</script>
 
-        function showReward() {
-            document.getElementById('letter').style.display = 'none';
-            document.getElementById('reward').style.display = 'block';
-            createConfetti();
-        }
-
-        function createConfetti() {
-            for (let i = 0; i < 70; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.top = '-10px';
-                confetti.style.backgroundColor = ['#8b0000', '#ff69b4', '#ffd700', '#f5ebe0'][Math.floor(Math.random() * 4)];
-                confetti.style.transform = `scale(${Math.random() * 1.5})`;
-                document.body.appendChild(confetti);
-
-                const animation = confetti.animate([
-                    { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
-                    { transform: `translateY(110vh) rotate(${Math.random() * 1000}deg)`, opacity: 0 }
-                ], { 
-                    duration: 2500 + Math.random() * 3000, 
-                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    iterations: 1 
-                });
-
-                animation.onfinish = () => confetti.remove();
-            }
-        }
-    </script>
 </body>
 </html>

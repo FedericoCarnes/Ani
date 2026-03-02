@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un comunicado del Vizconde Federico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap');
+
+        body {
+            background-color: #f5ebe0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Estilo del Sobre */
+        #envelope-container {
+            cursor: pointer;
+            transition: transform 0.5s;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #envelope-container:hover {
+            transform: scale(1.05);
+        }
+
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background-color: #d7ccc8;
+            position: relative;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 0 auto;
+        }
+
+        .seal {
+            width: 65px;
+            height: 65px;
+            background-color: #8b0000;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #5d0000;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffd700;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        /* Estilo de la Carta */
+        #letter {
+            display: none;
+            background-color: #fff9f0;
+            width: 90%;
+            max-width: 450px;
+            padding: 40px;
+            border: 2px solid #5d4037;
+            box-shadow: 0 0 25px rgba(0,0,0,0.15);
+            text-align: center;
+            animation: fadeIn 1.2s ease-out;
+            position: relative;
+        }
+
+        .header h1 { 
+            font-family: 'Cinzel', serif; 
+            border-bottom: 2px solid #5d4037; 
+            letter-spacing: 3px; 
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .date { font-size: 0.8rem; text-transform: uppercase; margin-bottom: 20px; display: block; }
+
+        .salutation { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: 2.8rem; 
+            margin-bottom: 20px; 
+            display: block; 
+            color: #3e2723;
+        }
+
+        .content p { line-height: 1.6; color: #3e2723; font-size: 1.05rem; }
+
+        .question { 
+            font-family: 'Cinzel', serif; 
+            font-weight: bold; 
+            font-size: 1.2rem; 
+            margin: 25px 0; 
+            border-top: 1px solid #d7ccc8; 
+            border-bottom: 1px solid #d7ccc8; 
+            padding: 15px 0; 
+            color: #2c1e1a;
+        }
+        
+        .btn-accept {
+            background-color: #5d4037;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-accept:hover { background-color: #8d6e63; letter-spacing: 1px; }
+
+        /* Pantalla Final */
+        #reward {
+            display: none;
+            text-align: center;
+            animation: scaleUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        #reward h2 { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: #8b0000; margin-bottom: 10px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleUp { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .confetti { position: absolute; width: 12px; height: 12px; border-radius: 50%; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+    <div id="envelope-container" onclick="openLetter()">
+        <div class="envelope">
+            <div class="seal">VF</div>
+        </div>
+        <p style="font-family: 'Cinzel'; margin-top: 20px; color: #5d4037; letter-spacing: 2px;">Para: Lady Ansandri</p>
+        <small style="color: #8d6e63;">(Haz clic para romper el sello)</small>
+    </div>
+
+    <div id="letter">
+        <div class="header">
+            <h1>SOCIETY PAPER</h1>
+            <span class="date">Londres, 14 de Febrero</span>
+        </div>
+        <div class="content">
+            <span class="salutation">Mi queridísima Lady Ansandri,</span>
+            <p>Se rumorea en todo el <i>ton</i> que el <b>Vizconde Federico</b> ha perdido finalmente la razón, pues su corazón ya no le pertenece a él, sino enteramente a usted.</p>
+            <p>Mi afecto no conoce límites y mi admiración es el secreto peor guardado de la temporada. La amo y la quiero con una devoción que las palabras apenas pueden capturar.</p>
+            <div class="question">¿Me concedería el honor de ser mi San Valentín?</div>
+            <button class="btn-accept" onclick="showReward()">Aceptar con Honor</button>
+        </div>
+    </div>
+
+    <div id="reward">
+        <h2>¡Es un Sí!</h2>
+        <p style="font-size: 1.3rem; color: #3e2723;">Has hecho al <b>Vizconde Federico</b> el hombre más afortunado del reino.</p>
+        <div style="font-size: 60px; margin: 20px 0;">💎🌹🥂</div>
+        <p style="font-style: italic; color: #5d4037;">Premio: Un beso eterno y una cita inolvidable reservada solo para ti.</p>
+    </div>
+
+    <script>
+        function openLetter() {
+            document.getElementById('envelope-container').style.display = 'none';
+            document.getElementById('letter').style.display = 'block';
+        }
+
+        function showReward() {
+            document.getElementById('letter').style.display = 'none';
+            document.getElementById('reward').style.display = 'block';
+            createConfetti();
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 70; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.backgroundColor = ['#8b0000', '#ff69b4', '#ffd700', '#f5ebe0'][Math.floor(Math.random() * 4)];
+                confetti.style.transform = `scale(${Math.random() * 1.5})`;
+                document.body.appendChild(confetti);
+
+                const animation = confetti.animate([
+                    { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translateY(110vh) rotate(${Math.random() * 1000}deg)`, opacity: 0 }
+                ], { 
+                    duration: 2500 + Math.random() * 3000, 
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    iterations: 1 
+                });
+
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Libro Fantasía Suprema</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,215,140,0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,215,140,0.06), transparent 40%),
+    #050507;
+  overflow:hidden;
+  font-family:'Cormorant Garamond', serif;
+}
+
+/* ===== RESPONSIVE SIZE ===== */
+.scene{
+  width:90vw;
+  max-width:520px;
+  height:140vw;
+  max-height:760px;
+  perspective:3000px;
+  position:relative;
+}
+
+.book{
+  width:100%;
+  height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+}
+
+/* ===== PAGE SYSTEM FIXED ===== */
+.page{
+  position:absolute;
+  width:100%;
+  height:100%;
+  transform-origin:left center;
+  transition:transform 1.2s cubic-bezier(.77,0,.18,1);
+  transform-style:preserve-3d;
+}
+
+.page.flipped{
+  transform:rotateY(-180deg);
+}
+
+.front,.back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  backface-visibility:hidden;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.back{
+  transform:rotateY(180deg);
+}
+
+/* ===== COVER ===== */
+.cover{
+  background:#07070b;
+  color:#e7c87a;
+  padding:10%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  border:2px solid #e7c87a;
+}
+/* ===== FINAL COVER ===== */
+.final-cover{
+  background:#07070b;
+  color:#e7c87a;
+  padding:10%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  border:2px solid #e7c87a;
+  position:relative;
+}
+
+/* estrellas más intensas que la portada */
+.final-cover::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(#e7c87a 1px, transparent 1px);
+  background-size:18px 18px;
+  opacity:0.08;
+}
+
+/* marco interior más elegante */
+.final-cover::after{
+  content:"";
+  position:absolute;
+  inset:8%;
+  border:1px solid rgba(231,200,122,0.8);
+}
+
+/* efecto brillo suave */
+.final-cover h1{
+  font-family:'Cinzel';
+  font-size:clamp(32px,7vw,60px);
+  letter-spacing:6px;
+  text-shadow:
+    0 0 20px rgba(231,200,122,0.6),
+    0 0 40px rgba(231,200,122,0.3);
+}
+
+.final-cover h2{
+  font-family:'Cinzel';
+  font-size:clamp(14px,3vw,20px);
+  letter-spacing:4px;
+  margin-top:10px;
+}
+/* Galaxy layer */
+.cover::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(#e7c87a 1px, transparent 1px);
+  background-size:22px 22px;
+  opacity:0.06;
+}
+
+/* Inner frame */
+.cover::after{
+  content:"";
+  position:absolute;
+  inset:6%;
+  border:1px solid rgba(231,200,122,0.6);
+}
+
+/* Golden metallic text */
+.gold{
+  background:linear-gradient(
+    120deg,
+    #fff6d5 0%,
+    #e7c87a 30%,
+    #caa44d 50%,
+    #e7c87a 70%,
+    #fff6d5 100%
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.cover h1{
+  font-family:'Cinzel';
+  font-size:23px;
+  letter-spacing:4px;
+  margin:0;
+}
+
+.symbol{
+  font-size:clamp(50px,10vw,90px);
+  margin:20px 0;
+  text-shadow:0 0 20px rgba(231,200,122,0.4);
+}
+
+.cover h2{
+  font-family:'Cinzel';
+  font-size:clamp(14px,3vw,18px);
+  letter-spacing:3px;
+}
+
+/* ===== PAPER ===== */
+.paper{
+  background:
+    radial-gradient(circle at top left, rgba(231,200,122,0.05), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(231,200,122,0.05), transparent 60%),
+    #f6efe4;
+  padding:12%;
+  color:#111;
+}
+
+/* Paper frame */
+.paper::before{
+  content:"";
+  position:absolute;
+  inset:8%;
+  border:1px solid rgba(231,200,122,0.6);
+}
+
+/* Constellation detail */
+.paper::after{
+  content:"✦ ✧ ✦";
+  position:absolute;
+  top:6%;
+  left:50%;
+  transform:translateX(-50%);
+  color:#e7c87a;
+  letter-spacing:6px;
+  font-size:12px;
+}
+
+h3{
+  font-family:'Cinzel';
+  letter-spacing:2px;
+  margin-top:0;
+}
+
+p{
+  font-size:clamp(14px,3.5vw,18px);
+  line-height:1.6;
+}
+
+/* ===== IMAGES ===== */
+.photo{
+  margin-top:25px;
+  height:180px;
+  border:1px solid rgba(0,0,0,0.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ===== FULLSCREEN FANTASY MODAL ===== */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(231,200,122,0.08), transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(231,200,122,0.06), transparent 40%),
+    rgba(5,5,10,0.95);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  visibility:hidden;
+  opacity:0;
+  transition:0.4s ease;
+  z-index:9999;
+}
+
+.modal.active{
+  visibility:visible;
+  opacity:1;
+}
+
+/* Contenedor */
+.modal-content{
+  position:relative;
+  max-width:95vw;
+  max-height:95vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* Imagen */
+.modal img{
+  max-width:100%;
+  max-height:85vh;
+  border:2px solid #e7c87a;
+  box-shadow:
+    0 0 40px rgba(231,200,122,0.4),
+    0 0 80px rgba(231,200,122,0.2);
+}
+
+/* Botón cerrar */
+.close-modal{
+  position:absolute;
+  top:-40px;
+  right:-10px;
+  font-size:26px;
+  cursor:pointer;
+  color:#e7c87a;
+  font-family:'Cinzel';
+  transition:0.3s;
+}
+
+.close-modal:hover{
+  transform:scale(1.2);
+  text-shadow:0 0 15px rgba(231,200,122,0.8);
+}
+
+/* Detalle decorativo */
+.modal-decoration{
+  margin-top:15px;
+  color:#e7c87a;
+  letter-spacing:8px;
+  font-size:18px;
+  opacity:0.8;
+}
+
+/* ===== CONTROLS ===== */
+.controls{
+  position:absolute;
+  bottom:-60px;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+}
+
+button{
+  background:#e7c87a;
+  border:none;
+  padding:10px 20px;
+  font-family:'Cinzel';
+  letter-spacing:2px;
+  cursor:pointer;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* evita que baje la pantalla */
+  background: #0c0f1a;
+}
+
+.book-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2500px;
+  overflow: hidden;
+}
+
+.book {
+  position: relative;
+  width: 380px;
+  height: 560px;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+
+@media (max-width: 600px) {
+  .book {
+    width: 90vw;
+    height: 130vw;
+    max-height: 90vh;
+  }
+}
+/* ===== GALERÍA FANTASÍA ===== */
+.gallery{
+  position:relative;
+  margin-top:25px;
+  border:1px solid rgba(0,0,0,0.2);
+  background:white;
+  overflow:hidden;
+}
+
+/* marco dorado sutil */
+.gallery::before{
+  content:"";
+  position:absolute;
+  inset:6%;
+  border:1px solid rgba(231,200,122,0.5);
+  pointer-events:none;
+}
+
+.carousel{
+  display:flex;
+  transition:transform 0.6s cubic-bezier(.77,0,.18,1);
+}
+
+.carousel img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  flex-shrink:0;
+  cursor:pointer;
+}
+
+/* Botones */
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(231,200,122,0.9);
+  border:none;
+  font-size:24px;
+  width:40px;
+  height:40px;
+  cursor:pointer;
+  font-family:'Cinzel';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev{ left:5px; }
+.next{ right:5px; }
+
+.nav:hover{
+  background:#e7c87a;
+}
+
+</style>
+</head>
+<body>
+
+<div class="scene">
+  <div class="book">
+    <!-- TAPA -->
+    <div class="page">
+      <div class="front cover">
+        <h1 class="gold">Nuestra pequeña historia</h1>
+        <div class="symbol">☽ ✧ ☾</div>
+        <h2 class="gold">Mi historia favorita</h2>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- 1 Inicios -->
+    <div class="page">
+      <div class="front paper">
+        <h3>Inicios</h3>
+        <p>
+          Hubo un día en que los dos teníamos ganas de hacer algo. Estábamos aburridos, hablando por WhatsApp, y le dijimos a Zoe, Pedro y Vito de ir a merendar. Vito no podía; pero fuimos con Zoe y Pedro. Merendamos y seguíamos con ganas de hacer algo; Zoe y Pedro rendían al otro día, entonces quedamos nosotros solos. Y fue ahí; ahí fue donde comenzó esta historia que tanto me gusta, esta historia que tanto amo, esta historia con vos. Viniste a casa a hacer dorilocos (qué receta de mierda, pero la recuerdo tan linda; la primera). Te quedaste a dormir y, a partir de ahí, algo entre nosotros empezó a cambiar. Te empezaba a ver distinta; no solo como la gran amiga que eras. Siempre me pareciste linda, pero no a ese nivel. Me empezó a gustar estar con vos.
+        </p>
+      </div>
+      <div class="back paper"></div>
+    </div>
+    <!-- 1.1 Inicios -->
+    <div class="page">
+      <div class="front paper">
+        <p>
+          Me daban ganas de levantarme y hablarte; acostarme en llamada, y sentía que estabas distinta, que tampoco me veías como amigo. Pero ninguno de los dos sabía qué pasaba; nunca te había pasado algo así, a mí tampoco a esta escala. Pero sí sabía que me estabas empezando a gustar, y me encantaba. Ahora el reto estaba en cómo hacer para que vos te dieras cuenta y quisieras entregar algo que nunca habías dado. 
+        </p>
+        <div class="photo" style="margin-top: 0;">
+          <img src="./Multimedia/dorilocos.jpeg">
+        </div>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- 2 BRC foto prime -->
+    <div class="page">
+      <div class="front paper">
+        <h3>Capítulo II</h3>
+        <p>
+          Cada constelación guarda un secreto,
+          cada mirada es un destino.
+        </p>
+        <div class="photo">
+          <img src="https://picsum.photos/600/400?random=2">
+        </div>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- 3 BRC boliches -->
+    <div class="page">
+      <div class="front paper">
+        <h3>Capítulo I</h3>
+        <p>
+          La magia susurra en las sombras de la academia,
+          donde las estrellas parecen observar.
+        </p>
+        <div class="gallery">
+          <div class="carousel">
+            <img src="https://picsum.photos/800/500?random=11">
+            <img src="https://picsum.photos/800/500?random=12">
+            <img src="https://picsum.photos/800/500?random=13">
+          </div>
+
+          <button class="nav prev">‹</button>
+          <button class="nav next">›</button>
+        </div>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- 4 BRC dia -->
+    <div class="page">
+      <div class="front paper">
+        <h3>Capítulo I</h3>
+        <p>
+          La magia susurra en las sombras de la academia,
+          donde las estrellas parecen observar.
+        </p>
+        <div class="gallery">
+          <div class="carousel">
+            <img src="https://picsum.photos/800/500?random=11">
+            <img src="https://picsum.photos/800/500?random=12">
+            <img src="https://picsum.photos/800/500?random=13">
+          </div>
+
+          <button class="nav prev">‹</button>
+          <button class="nav next">›</button>
+        </div>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- 5 Flores amarillas -->
+    <div class="page">
+      <div class="front paper">
+        <h3>Capítulo I</h3>
+        <p>
+          La magia susurra en las sombras de la academia,
+          donde las estrellas parecen observar.
+        </p>
+        <div class="gallery">
+          <div class="carousel">
+            <img src="https://picsum.photos/800/500?random=11">
+            <img src="https://picsum.photos/800/500?random=12">
+            <img src="https://picsum.photos/800/500?random=13">
+          </div>
+
+          <button class="nav prev">‹</button>
+          <button class="nav next">›</button>
+        </div>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- 6 autitos -->
+    <div class="page">
+      <div class="front paper">
+        <h3>Capítulo II</h3>
+        <p>
+          Cada constelación guarda un secreto,
+          cada mirada es un destino.
+        </p>
+        <div class="photo">
+          <img src="https://picsum.photos/600/400?random=2">
+        </div>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- 7 Salidas random -->
+    <div class="page">
+      <div class="front paper">
+        <h3>Capítulo I</h3>
+        <p>
+          La magia susurra en las sombras de la academia,
+          donde las estrellas parecen observar.
+        </p>
+        <div class="gallery">
+          <div class="carousel">
+            <img src="https://picsum.photos/800/500?random=11">
+            <img src="https://picsum.photos/800/500?random=12">
+            <img src="https://picsum.photos/800/500?random=13">
+          </div>
+
+          <button class="nav prev">‹</button>
+          <button class="nav next">›</button>
+        </div>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- 8 Boludeces en casa -->
+    <div class="page">
+      <div class="front paper">
+        <h3>Capítulo I</h3>
+        <p>
+          La magia susurra en las sombras de la academia,
+          donde las estrellas parecen observar.
+        </p>
+        <div class="gallery">
+          <div class="carousel">
+            <img src="https://picsum.photos/800/500?random=11">
+            <img src="https://picsum.photos/800/500?random=12">
+            <img src="https://picsum.photos/800/500?random=13">
+          </div>
+
+          <button class="nav prev">‹</button>
+          <button class="nav next">›</button>
+        </div>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- 9 autitos -->
+    <div class="page">
+      <div class="front paper">
+        <h3>Capítulo II</h3>
+        <p>
+          Cada constelación guarda un secreto,
+          cada mirada es un destino.
+        </p>
+        <div class="photo">
+          <img src="https://picsum.photos/600/400?random=2">
+        </div>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- 10 Palabras -->
+    <div class="page">
+      <div class="front paper">
+        <h3>Capítulo II</h3>
+        <p>
+          Cada constelación guarda un secreto,
+          cada mirada es un destino.
+        </p>
+      </div>
+      <div class="back paper"></div>
+    </div>
+
+    <!-- FINAL ÉPICO -->
+    <div class="page">
+      <div class="front final-cover">
+        <h1 class="gold">✦ FIN ✦</h1>
+        <div class="symbol">☾ ✧ ☽</div>
+        <h2 class="gold">El Destino ha sido escrito</h2>
+      </div>
+      <div class="back cover">
+        <h2 class="gold">Gracias por formar parte</h2>
+      </div>
+    </div>
+  
+  </div>
+
+  <div class="controls">
+    <button onclick="prevPage()">◀</button>
+    <button onclick="nextPage()">▶</button>
+  </div>
+
+</div>
+<!-- IMAGE MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close-modal">✕</span>
+    <img id="modalImg">
+    <div class="modal-decoration">✦ ✧ ✦</div>
+  </div>
+</div>
+
+<script>
+const pages = document.querySelectorAll(".page");
+let currentPage = 0;
+let isAnimating = false;
+
+function updateZIndex() {
+  pages.forEach((page, index) => {
+    page.style.zIndex = pages.length - index;
+  });
+}
+
+updateZIndex();
+
+function nextPage() {
+  if (currentPage >= pages.length - 1 || isAnimating) return;
+
+  isAnimating = true;
+
+  pages[currentPage].classList.add("flipped");
+
+  currentPage++;
+
+  setTimeout(() => {
+    isAnimating = false;
+  }, 1000);
+}
+
+function prevPage() {
+  if (currentPage <= 0 || isAnimating) return;
+
+  isAnimating = true;
+
+  currentPage--;
+
+  pages[currentPage].classList.remove("flipped");
+
+  setTimeout(() => {
+    isAnimating = false;
+  }, 1000);
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") nextPage();
+  if (e.key === "ArrowLeft") prevPage();
+});
+
+// Swipe en celular
+let startX = 0;
+
+document.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", (e) => {
+  let endX = e.changedTouches[0].clientX;
+
+  if (startX - endX > 50) nextPage();
+  if (endX - startX > 50) prevPage();
+});
+
+/* ===== CAROUSEL ===== */
+document.querySelectorAll(".gallery").forEach(gallery => {
+
+  const carousel = gallery.querySelector(".carousel");
+  const images = carousel.querySelectorAll("img");
+  const prevBtn = gallery.querySelector(".prev");
+  const nextBtn = gallery.querySelector(".next");
+
+  let index = 0;
+
+  function updateCarousel(){
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  nextBtn.onclick = () => {
+    if(index < images.length - 1){
+      index++;
+      updateCarousel();
+    }
+  };
+
+  prevBtn.onclick = () => {
+    if(index > 0){
+      index--;
+      updateCarousel();
+    }
+  };
+
+  /* Swipe móvil */
+  let startX = 0;
+
+  carousel.addEventListener("touchstart", e=>{
+    startX = e.touches[0].clientX;
+  });
+
+  carousel.addEventListener("touchend", e=>{
+    let endX = e.changedTouches[0].clientX;
+
+    if(startX - endX > 50 && index < images.length - 1){
+      index++;
+    }
+    if(endX - startX > 50 && index > 0){
+      index--;
+    }
+
+    updateCarousel();
+  });
+
+  /* Click imagen = popup */
+  images.forEach(img=>{
+    img.addEventListener("click", ()=>{
+      openModal(img.src);
+    });
+  });
+
+});
+
+/* ===== MODAL ===== */
+function openModal(src){
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+  modalImg.src = src;
+  modal.classList.add("active");
+}
+
+/* cerrar */
+document.querySelector(".close-modal").addEventListener("click", ()=>{
+  document.getElementById("modal").classList.remove("active");
+});
+
+document.getElementById("modal").addEventListener("click", (e)=>{
+  if(e.target.id === "modal"){
+    document.getElementById("modal").classList.remove("active");
+  }
+});
+</script>
+
+</body>
+</html>
