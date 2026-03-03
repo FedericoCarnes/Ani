@@ -3,181 +3,427 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Renovación del Año</title>
+<title>Mis Comunicados Digitales</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
+*{box-sizing:border-box}
 
 body{
-    background:#000;
-    overflow-x:hidden;
+  margin:0;
+  min-height:100vh;
+  font-family:'Cormorant Garamond',serif;
+  background: radial-gradient(circle at top, #fdf8ee 0%, #efe3cc 70%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:#2b2b2b;
 }
 
-/* PORTADA */
-.portada{
-    position:relative;
-    width:100%;
-    height:100vh;
-    background:url("./portada.jpeg") center/cover no-repeat;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer;
-    transition:transform 0.6s ease;
+/* HEADER */
+
+h1{
+  font-family:'Cinzel',serif;
+  font-size:2.2rem;
+  margin:50px 0 20px 0;
+  color:#b89c4e;
+  letter-spacing:2px;
+  text-align:center;
+  position:relative;
 }
 
-.portada::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.4);
-    transition:background 0.5s;
+h1::after{
+  content:"";
+  display:block;
+  width:140px;
+  height:2px;
+  margin:16px auto 0 auto;
+  background:linear-gradient(90deg, transparent, #d4af37, #f5d76e, #d4af37, transparent);
+  position:relative;
 }
 
-.portada:hover{
-    transform:scale(1.02);
+h1::before{
+  content:"✦";
+  z-index: 1;
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-10px;
+  font-size:1rem;
+  color:#d4af37;
 }
 
-.titulo-overlay{
-    position:relative;
-    z-index:2;
-    color:white;
-    text-align:center;
-    font-size:clamp(24px, 5vw, 50px);
-    font-weight:600;
-    letter-spacing:2px;
-    animation:fadeIn 2s ease forwards;
+/* FILTROS */
+
+.filtros{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:35px;
+  width:100%;
+  max-width:900px;
+  padding:0 15px;
 }
 
-/* MODAL */
-.modal{
-    position:fixed;
-    inset:0;
-    z-index: 3;
-    background:rgba(0,0,0,0.85);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    opacity:0;
-    visibility:hidden;
-    transition:opacity 0.5s ease;
+.filtros input,
+.filtros select{
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid #e7c87a66;
+  font-size:1rem;
+  background:#fffdf8;
+  transition:.2s;
 }
 
-.modal.active{
-    opacity:1;
-    visibility:visible;
+.filtros input:focus,
+.filtros select:focus{
+  outline:none;
+  border-color:#d4af37;
+  box-shadow:0 0 0 2px #d4af3722;
 }
 
-.contenido{
-    background:white;
-    max-width:800px;
-    width:100%;
-    padding:40px 30px;
-    border-radius:20px;
-    text-align:center;
-    animation:slideUp 0.8s ease;
+/* CONTENEDOR */
+
+.libros{
+  display:flex;
+  flex-wrap:wrap;
+  gap:28px;
+  justify-content:center;
+  width:100%;
+  max-width:1100px;
+  padding:40px;
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(8px);
+  border-radius:30px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.08);
 }
 
-.contenido h1{
-    font-size:clamp(24px, 4vw, 38px);
-    margin-bottom:20px;
+/* TARJETA */
+
+.libro{
+  background:linear-gradient(145deg,#ffffff,#f8f2e6);
+  border-radius:18px;
+  padding:20px;
+  width:220px;
+  cursor:pointer;
+  position:relative;
+  transition:.3s;
+  box-shadow:0 8px 22px rgba(0,0,0,0.08);
 }
 
-.contenido p{
-    font-size:clamp(16px, 2.5vw, 20px);
-    line-height:1.6;
-    margin-bottom:20px;
+.libro::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  height:6px;
+  width:100%;
+  background:linear-gradient(90deg,#d4af37,#f5d76e);
+  border-radius:18px 18px 0 0;
 }
 
-.cerrar{
-    margin-top:10px;
-    background:#c40000;
-    color:white;
-    border:none;
-    padding:10px 20px;
-    border-radius:50px;
-    cursor:pointer;
-    transition:background 0.3s;
+.libro:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 38px rgba(0,0,0,0.12);
 }
 
-.cerrar:hover{
-    background:#900000;
+.libro img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:12px;
 }
 
-/* ANIMACIONES */
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
+.libro-title{
+  font-family:'Cinzel',serif;
+  font-size:1.1rem;
+  color:#b89c4e;
+  margin-bottom:6px;
+  font-weight:600;
 }
 
-@keyframes slideUp{
-    from{transform:translateY(50px); opacity:0;}
-    to{transform:translateY(0); opacity:1;}
+.libro-path{
+  font-size:.85rem;
+  color:#9c8b5e;
+  opacity:.8;
+  word-break:break-word;
 }
 
-/* RESPONSIVE EXTRA */
-@media(max-width:600px){
-    .contenido{
-        padding:25px 20px;
-    }
+.nuevo{
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:#d4af37;
+  color:#fff;
+  font-size:.7rem;
+  padding:5px 10px;
+  border-radius:20px;
+  font-weight:600;
 }
 
+/* PAGINACION */
+
+.paginacion{
+  margin:35px 0 60px 0;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.paginacion button{
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid #d4af37;
+  background:white;
+  cursor:pointer;
+  transition:.2s;
+  font-family:'Cinzel',serif;
+}
+
+.paginacion button:hover{
+  background:#d4af37;
+  color:white;
+}
+
+.paginacion button.activa{
+  background:#d4af37;
+  color:white;
+}
+
+.paginacion button:disabled{
+  opacity:.4;
+  cursor:default;
+}
+.footer{
+  margin-top:auto;
+  width:100%;
+  text-align:center;
+  padding:50px 20px 40px 20px;
+  position:relative;
+  background:linear-gradient(180deg, transparent, rgba(0,0,0,0.04));
+}
+
+.footer-ornamento{
+  width:140px;
+  height:2px;
+  margin:0 auto 18px auto;
+  background:linear-gradient(90deg, transparent, #d4af37, #f5d76e, #d4af37, transparent);
+  position:relative;
+}
+
+.footer-ornamento::after{
+  content:"✦";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:-12px;
+  font-size:1rem;
+  color:#d4af37;
+}
+
+.footer-texto{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.95rem;
+  letter-spacing:1px;
+  color:#9c8b5e;
+}
+
+.footer-texto span{
+  display:block;
+  margin-top:6px;
+  font-family:'Cinzel',serif;
+  font-size:1.05rem;
+  letter-spacing:2px;
+  color:#b89c4e;
+}
 </style>
 </head>
+
 <body>
 
-<div class="portada" onclick="abrirModal()">
-    <div class="titulo-overlay">
-        LA RENOVACIÓN DEL AÑO
-        <br><small style="font-size:18px;">(Tocar para ver comunicado)</small>
-    </div>
+<h1>Mis Comunicados Digitales</h1>
+
+<div class="filtros">
+  <input id="busqueda" type="text" placeholder="Buscar comunicado...">
+  <select id="ordenar">
+    <option value="fecha-desc">Más nuevo primero</option>
+    <option value="fecha-asc">Más antiguo primero</option>
+    <option value="nombre-asc">Nombre A-Z</option>
+    <option value="nombre-desc">Nombre Z-A</option>
+  </select>
 </div>
 
-<div class="modal" id="modal">
-    <div class="contenido">
-        <h1>LA RENOVACIÓN DEL AÑO</h1>
-        <p>
-        Se informa a toda la comunidad que el jugador estrella, <strong>Mateo Salinas</strong>, 
-        ha decidido renovar su contrato con el equipo <strong>Mi Monumental Corazón</strong> 
-        por una temporada más.
-        </p>
+<div class="libros" id="libros"></div>
+<div class="paginacion" id="paginacion"></div>
 
-        <p>
-        Tras alcanzar los 24 años en un estado físico e intelectual impecable 
-        (confirmado por sus proyecciones de Actuario y el control de calidad de Renault), 
-        el club ha decidido continuar con su jugador estrella.
-        </p>
-
-        <p>
-        Como prima por fichaje, se ha programado un almuerzo de gala para celebrar este acuerdo histórico.
-        </p>
-
-        <p>
-        <strong>Sede:</strong> Cuenta Ganado, Parque Leloir.
-        </p>
-
-        <p>
-        Confirmar asistencia con un beso.
-        </p>
-
-        <button class="cerrar" onclick="cerrarModal()">Cerrar</button>
-    </div>
-</div>
-
+<footer class="footer">
+  <div class="footer-ornamento"></div>
+  <div class="footer-texto">
+    Página exclusiva de<br>
+    <span>Ana Eugenia Ansandri</span>
+  </div>
+</footer>
 <script>
-function abrirModal(){
-    document.getElementById("modal").classList.add("active");
+const librosPorPagina = 4;
+let paginaActual = 1;
+
+const carpetas = [
+  { path: 'Carta de San Valentin 14_02_26', fecha: '14_02_26' },
+  { path: 'Libro de recuerdos 08_03_26', fecha: '08_03_26' }
+];
+
+function fechasCercanas(){
+  const hoy=new Date();
+  const fechas=[];
+  for(let i=-1;i<=1;i++){
+    const f=new Date(hoy);
+    f.setDate(hoy.getDate()+i);
+    let d=f.getDate().toString().padStart(2,'0');
+    let m=(f.getMonth()+1).toString().padStart(2,'0');
+    let a=f.getFullYear().toString().slice(-2);
+    fechas.push(`${d}_${m}_${a}`);
+  }
+  return fechas;
 }
 
-function cerrarModal(){
-    document.getElementById("modal").classList.remove("active");
+async function getTituloDeIndex(ruta){
+  try{
+    const resp=await fetch(ruta);
+    const html=await resp.text();
+    const match=html.match(/<title>(.*?)<\/title>/i);
+    return match?match[1]:'Sin título';
+  }catch{return 'Sin título'}
 }
+
+let carpetasConTitulo=[];
+
+async function cargarTitulos(){
+  carpetasConTitulo=[];
+  for(const carpeta of carpetas){
+    const indexPath=`${carpeta.path}/index.html`;
+    const titulo=await getTituloDeIndex(indexPath);
+    carpetasConTitulo.push({...carpeta,titulo});
+  }
+}
+
+function obtenerListaFiltrada(){
+  let filtro=document.getElementById('busqueda').value.toLowerCase();
+  let orden=document.getElementById('ordenar').value;
+  const hoy=new Date();
+  hoy.setHours(0,0,0,0);
+
+  // Función para convertir 'dd_mm_aa' a Date
+  function fechaStrADate(str){
+    const [d,m,a]=str.split('_');
+    // Asume años 2000+
+    return new Date(2000+parseInt(a),parseInt(m)-1,parseInt(d));
+  }
+
+  let lista=carpetasConTitulo.filter(c=>{
+    const coincideBusqueda = c.path.toLowerCase().includes(filtro) || c.titulo.toLowerCase().includes(filtro);
+    const fechaComunicado = fechaStrADate(c.fecha);
+    // Mostrar si la fecha del comunicado es menor o igual a hoy
+    const esPasadoOHoy = fechaComunicado <= hoy;
+    return coincideBusqueda && esPasadoOHoy;
+  });
+
+  lista.sort((a,b)=>{
+    const fechaA = fechaStrADate(a.fecha);
+    const fechaB = fechaStrADate(b.fecha);
+    // Priorizar el comunicado del día
+    if(fechaA.getTime()===hoy.getTime() && fechaB.getTime()!==hoy.getTime()) return -1;
+    if(fechaB.getTime()===hoy.getTime() && fechaA.getTime()!==hoy.getTime()) return 1;
+
+    // Luego aplicar orden seleccionado
+    if(orden==='fecha-desc') return fechaB-fechaA;
+    if(orden==='fecha-asc') return fechaA-fechaB;
+    if(orden==='nombre-asc') return a.path.localeCompare(b.path);
+    if(orden==='nombre-desc') return b.path.localeCompare(a.path);
+    return 0;
+  });
+
+  return lista;
+}
+
+function renderLibros(){
+  const cont=document.getElementById('libros');
+  cont.innerHTML='';
+  const hoy=new Date();
+  let d=hoy.getDate().toString().padStart(2,'0');
+  let m=(hoy.getMonth()+1).toString().padStart(2,'0');
+  let a=hoy.getFullYear().toString().slice(-2);
+  const fechaHoy=`${d}_${m}_${a}`;
+
+  const lista=obtenerListaFiltrada();
+  const inicio=(paginaActual-1)*librosPorPagina;
+  const fin=inicio+librosPorPagina;
+  const pagina=lista.slice(inicio,fin);
+
+  for(const carpeta of pagina){
+    const indexPath=`${carpeta.path}/index.html`;
+    let etiqueta = '';
+    if(carpeta.fecha === fechaHoy){
+      etiqueta = '<div class="nuevo">LANZAMIENTO</div>';
+    }
+    // Si quieres mantener la etiqueta NUEVO para comunicados recientes, puedes agregar lógica aquí
+
+    const div=document.createElement('div');
+    div.className='libro';
+    div.onclick=()=>window.location.href=indexPath;
+
+    div.innerHTML=`
+      <img src="${carpeta.path}/portada.jpg" 
+           onerror="this.src='https://picsum.photos/300/200?grayscale'">
+      <div class="libro-title">${carpeta.titulo}</div>
+      <div class="libro-path">${carpeta.path}</div>
+      ${etiqueta}
+    `;
+
+    cont.appendChild(div);
+  }
+
+  renderPaginacion(lista.length);
+}
+
+function renderPaginacion(total){
+  const cont=document.getElementById('paginacion');
+  cont.innerHTML='';
+
+  const totalPaginas=Math.ceil(total/librosPorPagina);
+
+  for(let i=1;i<=totalPaginas;i++){
+    const btn=document.createElement('button');
+    btn.textContent=i;
+    if(i===paginaActual) btn.classList.add('activa');
+    btn.onclick=()=>{
+      paginaActual=i;
+      renderLibros();
+      window.scrollTo({top:0,behavior:'smooth'});
+    };
+    cont.appendChild(btn);
+  }
+}
+
+async function init(){
+  await cargarTitulos();
+  renderLibros();
+}
+
+document.getElementById('busqueda').addEventListener('input',()=>{
+  paginaActual=1;
+  renderLibros();
+});
+
+document.getElementById('ordenar').addEventListener('change',()=>{
+  paginaActual=1;
+  renderLibros();
+});
+
+init();
 </script>
 
 </body>

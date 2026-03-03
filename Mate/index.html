@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Renovación del Año</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background:#000;
+    overflow-x:hidden;
+}
+
+/* PORTADA */
+.portada{
+    position:relative;
+    width:100%;
+    height:100vh;
+    background:url("./portada.jpeg") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:transform 0.6s ease;
+}
+
+.portada::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    transition:background 0.5s;
+}
+
+.portada:hover{
+    transform:scale(1.02);
+}
+
+.titulo-overlay{
+    position:relative;
+    z-index:2;
+    color:white;
+    text-align:center;
+    font-size:clamp(24px, 5vw, 50px);
+    font-weight:600;
+    letter-spacing:2px;
+    animation:fadeIn 2s ease forwards;
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    z-index: 3;
+    background:rgba(0,0,0,0.85);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 0.5s ease;
+}
+
+.modal.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.contenido{
+    background:white;
+    max-width:800px;
+    width:100%;
+    padding:40px 30px;
+    border-radius:20px;
+    text-align:center;
+    animation:slideUp 0.8s ease;
+}
+
+.contenido h1{
+    font-size:clamp(24px, 4vw, 38px);
+    margin-bottom:20px;
+}
+
+.contenido p{
+    font-size:clamp(16px, 2.5vw, 20px);
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.cerrar{
+    margin-top:10px;
+    background:#c40000;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:50px;
+    cursor:pointer;
+    transition:background 0.3s;
+}
+
+.cerrar:hover{
+    background:#900000;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes slideUp{
+    from{transform:translateY(50px); opacity:0;}
+    to{transform:translateY(0); opacity:1;}
+}
+
+/* RESPONSIVE EXTRA */
+@media(max-width:600px){
+    .contenido{
+        padding:25px 20px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="portada" onclick="abrirModal()">
+    <div class="titulo-overlay">
+        LA RENOVACIÓN DEL AÑO
+        <br><small style="font-size:18px;">(Tocar para ver comunicado)</small>
+    </div>
+</div>
+
+<div class="modal" id="modal">
+    <div class="contenido">
+        <h1>LA RENOVACIÓN DEL AÑO</h1>
+        <p>
+        Se informa a toda la comunidad que el jugador estrella, <strong>Mateo Salinas</strong>, 
+        ha decidido renovar su contrato con el equipo <strong>Mi Monumental Corazón</strong> 
+        por una temporada más.
+        </p>
+
+        <p>
+        Tras alcanzar los 24 años en un estado físico e intelectual impecable 
+        (confirmado por sus proyecciones de Actuario y el control de calidad de Renault), 
+        el club ha decidido continuar con su jugador estrella.
+        </p>
+
+        <p>
+        Como prima por fichaje, se ha programado un almuerzo de gala para celebrar este acuerdo histórico.
+        </p>
+
+        <p>
+        <strong>Sede:</strong> Cuenta Ganado, Parque Leloir.
+        </p>
+
+        <p>
+        Confirmar asistencia con un beso.
+        </p>
+
+        <button class="cerrar" onclick="cerrarModal()">Cerrar</button>
+    </div>
+</div>
+
+<script>
+function abrirModal(){
+    document.getElementById("modal").classList.add("active");
+}
+
+function cerrarModal(){
+    document.getElementById("modal").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
