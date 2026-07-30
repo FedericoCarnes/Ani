@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>El Libro Encantado</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Fondo -->
+
+    <button id="soundToggle" class="sound-toggle" aria-pressed="false" aria-label="Activar o silenciar sonido ambiental">
+
+        Activar ambiente
+
+    </button>
+
+    <div class="background"></div>
+
+    <div class="fog"></div>
+
+    <div class="particles"></div>
+
+    <div class="candles">
+
+        <div class="candle left"></div>
+        <div class="candle right"></div>
+
+    </div>
+
+    <!-- Libro -->
+
+    <main id="book">
+
+        <!-- ======================= -->
+        <!-- PORTADA -->
+        <!-- ======================= -->
+
+        <section class="page active" id="cover">
+
+            <div class="page-content">
+
+                <div class="ornament">✦ ✦ ✦</div>
+
+                <h1>
+
+                    EL LIBRO<br>
+                    ENCANTADO
+
+                </h1>
+
+                <h2>
+
+                    de los Secretos Olvidados
+
+                </h2>
+
+                <p class="quote">
+
+                    "Hay libros que se leen...
+
+                    y otros que eligen
+
+                    a quién contarles su historia."
+
+                </p>
+
+                <div class="name">
+
+                    Para Ana
+
+                </div>
+
+                <button id="startBtn">
+
+                    Abrir el Libro
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+        <!-- PRÓLOGO -->
+        <!-- ======================= -->
+
+        <section class="page">
+
+            <div class="page-content">
+
+                <h2>Prólogo</h2>
+
+                <div class="story">
+
+                    <p>
+
+                        Querida Ana...
+
+                    </p>
+
+                    <p>
+
+                        Existen historias que jamás llegan a escribirse.
+
+                    </p>
+
+                    <p>
+
+                        Secretos que permanecen ocultos durante siglos.
+
+                    </p>
+
+                    <p>
+
+                        Y libros...
+
+                        que solo despiertan cuando encuentran a la persona indicada.
+
+                    </p>
+
+                    <p>
+
+                        Hoy...
+
+                        este libro decidió abrirse para vos.
+
+                    </p>
+
+                </div>
+
+                <button class="next">
+
+                    Comenzar la aventura
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+        <!-- SALA DE PRUEBAS -->
+        <!-- ======================= -->
+
+        <section class="page" id="challenges">
+
+            <div class="page-content challenge-page">
+
+                <h2>
+
+                    Sala de Pruebas
+
+                </h2>
+
+                <p class="quote">
+
+                    Elegí una prueba desbloqueada para continuar tu aventura.
+
+                </p>
+
+                <div id="challengeGrid" class="challenge-grid"></div>
+
+                <button id="toReveal" class="continue-btn" hidden>
+
+                    Descubrir el secreto
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+        <!-- CARTA 1 -->
+        <!-- ======================= -->
+
+        <section class="page">
+
+            <div class="letter">
+
+                <div class="seal">
+
+                    A
+
+                </div>
+
+                <div class="letter-content">
+
+                    <h2>
+
+                        Primer Desafio
+
+                    </h2>
+
+                    <p>
+
+                        No llevo capa,
+
+                    </p>
+
+                    <p>
+
+                        pero aparezco cuando alguien me necesita.
+
+                    </p>
+
+                    <p>
+
+                        Tengo tu carisma
+
+                        y tu forma de abrazar a todos.
+
+                    </p>
+
+                    <h3>
+
+                        ¿Qué soy?
+
+                    </h3>
+
+                    <input
+                        type="text"
+                        autocomplete="off"
+                        data-answer="bondad">
+
+                    <button class="check">
+
+                        Comprobar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+
+        <section class="page">
+
+            <div class="letter">
+
+                <div class="seal">
+
+                    A
+
+                </div>
+
+                <div class="letter-content">
+
+                    <h2>
+
+                        Segunda Prueba
+
+                    </h2>
+
+                    <p>
+
+                        Hubo una noche de nervios,
+
+                    </p>
+
+                    <p>
+
+                        risas y miradas que no se olvidan.
+
+                    </p>
+
+                    <p>
+
+                        Entre sabores del mar,
+
+                        te pedi que fueras mi novia.
+
+                    </p>
+
+                    <h3>
+
+                        ¿Qué soy?
+
+                    </h3>
+
+                    <input
+                        type="text"
+                        autocomplete="off"
+                        data-answer="sushi burgas">
+
+                    <button class="check">
+
+                        Comprobar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+
+        <section class="page">
+
+            <div class="letter">
+
+                <div class="seal">
+
+                    A
+
+                </div>
+
+                <div class="letter-content">
+
+                    <h2>
+
+                        Tercera Prueba
+
+                    </h2>
+
+                    <p>
+
+                        No es un hechizo,
+
+                    </p>
+
+                    <p>
+
+                        pero me deja sin palabras.
+
+                    </p>
+
+                    <p>
+
+                        Es lo primero que busco
+
+                        cuando te miro.
+
+                    </p>
+
+                    <h3>
+
+                        ¿Qué soy?
+
+                    </h3>
+
+                    <input
+                        type="text"
+                        autocomplete="off"
+                        data-answer="ojos">
+
+                    <button class="check">
+
+                        Comprobar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+
+        <section class="page">
+
+            <div class="letter">
+
+                <div class="seal">
+
+                    A
+
+                </div>
+
+                <div class="letter-content">
+
+                    <h2>
+
+                        Cuarta Prueba
+
+                    </h2>
+
+                    <p>
+
+                        Fue una salida distinta,
+
+                    </p>
+
+                    <p>
+
+                        con libros alrededor
+
+                        y el corazon latiendo fuerte.
+
+                    </p>
+
+                    <p>
+
+                        Ahi vivimos
+
+                        nuestro primer beso en publico.
+
+                    </p>
+
+                    <h3>
+
+                        ¿Qué soy?
+
+                    </h3>
+
+                    <input
+                        type="text"
+                        autocomplete="off"
+                        data-answer="el ateneo">
+
+                    <button class="check">
+
+                        Comprobar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+
+        <section class="page">
+
+            <div class="letter">
+
+                <div class="seal">
+
+                    A
+
+                </div>
+
+                <div class="letter-content">
+
+                    <h2>
+
+                        Quinta Prueba
+
+                    </h2>
+
+                    <p>
+
+                        Si una sombra pudiera cantar,
+
+                    </p>
+
+                    <p>
+
+                        y el reloj caminara para atras,
+
+                    </p>
+
+                    <p>
+
+                        ¿que frase abriria
+
+                        la puerta que no existe?
+
+                    </p>
+
+                    <p>
+
+                        Pista: no busques logica,
+
+                        busca verdad.
+
+                    </p>
+
+                    <h3>
+
+                        ¿Qué son?
+
+                    </h3>
+
+                    <input
+                        type="text"
+                        autocomplete="off"
+                        data-answer="sos el amor de mi vida">
+
+                    <button class="check">
+
+                        Comprobar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+        <!-- REVELACIÓN -->
+        <!-- ======================= -->
+
+        <section class="page" id="reveal">
+
+            <div class="page-content">
+
+                <h2>
+
+                    Ana...
+
+                </h2>
+
+                <p>
+
+                    Has superado todas las pruebas.
+
+                </p>
+
+                <p>
+
+                    Pero el verdadero secreto...
+
+                </p>
+
+                <p>
+
+                    nunca estuvo escondido
+
+                    entre estas páginas.
+
+                </p>
+
+                <p>
+
+                    La magia no siempre consiste
+
+                    en lanzar hechizos.
+
+                </p>
+
+                <p>
+
+                    A veces...
+
+                </p>
+
+                <p>
+
+                    consiste simplemente
+
+                    en compartir un momento
+
+                    con alguien especial.
+
+                </p>
+
+                <button class="next">
+
+                    Descubrir el secreto
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ======================= -->
+        <!-- FINAL -->
+        <!-- ======================= -->
+
+        <section class="page final">
+
+            <div class="page-content">
+
+                <div class="magic">
+
+                    ✨
+
+                </div>
+
+                <h1>
+
+                    🍣
+
+                </h1>
+
+                <h1>
+
+                    SUSHI LIBRE
+
+                </h1>
+
+                <p>
+
+                    Tu próxima misión ha sido revelada.
+
+                </p>
+
+                <div class="invite">
+
+                    <h2>
+
+                        Invitación Oficial
+
+                    </h2>
+
+                    <p>
+
+                        Por la presente...
+
+                    </p>
+
+                    <p>
+
+                        Se invita a
+
+                    </p>
+
+                    <h2>
+
+                        ANA
+
+                    </h2>
+
+                    <p>
+
+                        A compartir
+
+                        una noche llena
+
+                        de sushi,
+
+                        risas
+
+                        y una nueva aventura.
+
+                    </p>
+
+                    <br>
+
+                    <p>
+
+                        📅 Fecha:
+
+                        31/07/2026
+
+                    </p>
+
+                    <p>
+
+                        📍 Lugar:
+
+                        Sushi /Oi Saavedra
+
+                    </p>
+
+                </div>
+
+                <button id="finish">
+
+                    ✨ Aceptar la misión ✨
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
