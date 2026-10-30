@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172922">
+  <meta name="description" content="Un libro de recuerdos para celebrar el primer año de Ana y Federico.">
+  <title>Nuestra pequeña historia | Ana &amp; Federico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #20342b;
+      --muted: #6f766b;
+      --paper: #f7f3e9;
+      --paper-deep: #eee6d4;
+      --green: #203b30;
+      --green-dark: #172922;
+      --gold: #c9a86b;
+      --wine: #8c4c51;
+      --line: rgba(32, 59, 48, .16);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --display: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--wine);
+      font-family: var(--sans);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    .site-header {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.35rem clamp(1.25rem, 5vw, 5rem);
+      color: #fffaf0;
+    }
+
+    .monogram {
+      display: inline-flex;
+      width: 2.7rem;
+      height: 2.7rem;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(239, 218, 172, .65);
+      border-radius: 50%;
+      color: #e8cf99;
+      font-family: var(--display);
+      font-size: .95rem;
+      text-decoration: none;
+    }
+
+    .site-nav {
+      display: flex;
+      gap: clamp(1rem, 3vw, 2.5rem);
+      font-family: var(--sans);
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      text-underline-offset: .35rem;
+    }
+
+    .site-nav a:hover { text-decoration: underline; }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: min(810px, 100svh);
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .82fr);
+      align-items: center;
+      gap: clamp(2rem, 6vw, 6rem);
+      overflow: hidden;
+      padding: 8rem clamp(1.5rem, 9vw, 9rem) 5rem;
+      background:
+        radial-gradient(ellipse at 18% 20%, rgba(201, 168, 107, .14), transparent 35%),
+        radial-gradient(ellipse at 82% 83%, rgba(140, 76, 81, .13), transparent 35%),
+        var(--green-dark);
+      color: #fffaf0;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      z-index: 0;
+      color: rgba(226, 196, 135, .5);
+      content: "✦";
+      pointer-events: none;
+    }
+
+    .hero::before {
+      top: 24%;
+      right: 7%;
+      font-size: 1.1rem;
+    }
+
+    .hero::after {
+      bottom: 13%;
+      left: 5%;
+      font-size: .75rem;
+    }
+
+    .hero-copy,
+    .hero-photo { position: relative; z-index: 1; }
+
+    .hero .eyebrow { color: #e1c98f; }
+
+    .hero h1 {
+      max-width: 700px;
+      margin: 1.15rem 0 1rem;
+      font-family: var(--display);
+      font-size: clamp(3.35rem, 7.3vw, 7rem);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: .98;
+    }
+
+    .hero h1 em {
+      color: #e1c98f;
+      font-weight: 500;
+    }
+
+    .hero-intro {
+      max-width: 440px;
+      margin: 1.4rem 0 2rem;
+      color: rgba(255, 250, 240, .82);
+      font-size: clamp(1.18rem, 2vw, 1.45rem);
+    }
+
+    .dedication {
+      margin: 0 0 2rem;
+      color: #e1c98f;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 1.4rem;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 3rem;
+      align-items: center;
+      justify-content: center;
+      padding: .72rem 1.2rem;
+      border: 1px solid #d5bd85;
+      border-radius: 2px;
+      background: #d5bd85;
+      color: var(--green-dark);
+      font-family: var(--sans);
+      font-size: .76rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button--quiet {
+      border-color: rgba(255, 250, 240, .55);
+      background: transparent;
+      color: #fffaf0;
+    }
+
+    .button--quiet:hover { background: rgba(255, 250, 240, .1); }
+
+    .hero-photo {
+      width: min(100%, 430px);
+      justify-self: center;
+      margin: 0;
+      padding: .8rem .8rem 3.2rem;
+      background: #f5efe1;
+      box-shadow: 0 22px 65px rgba(0, 0, 0, .35);
+      transform: rotate(2deg);
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 45%;
+    }
+
+    .hero-photo figcaption {
+      position: absolute;
+      right: .8rem;
+      bottom: .7rem;
+      left: .8rem;
+      color: #655b4b;
+      font-size: 1.35rem;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .section {
+      padding: clamp(4.5rem, 9vw, 8rem) clamp(1.35rem, 8vw, 8rem);
+    }
+
+    .section-heading {
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: .55rem 0 .85rem;
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 5vw, 4.35rem);
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: 1.08;
+    }
+
+    .section-heading p:last-child {
+      max-width: 550px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+
+    .opening {
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(201, 168, 107, .1), transparent 35%),
+        var(--paper);
+    }
+
+    .opening-copy {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(1.8rem, 5vw, 4rem);
+      border-top: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      text-align: center;
+    }
+
+    .opening-copy p {
+      margin: 0 0 1rem;
+      font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+    }
+
+    .opening-copy p:last-child { margin-bottom: 0; }
+
+    .opening-copy .first-letter {
+      color: var(--wine);
+      font-family: var(--display);
+      font-size: 4.5rem;
+      line-height: .7;
+    }
+
+    .story { background: #eee8dc; }
+
+    .chapter-carousel {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(1.5rem, 5vw, 3.5rem);
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 248, .68);
+      box-shadow: 0 16px 48px rgba(32, 52, 43, .06);
+    }
+
+    .chapter-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--wine);
+      font-family: var(--sans);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .chapter-slide {
+      min-height: 330px;
+      padding: clamp(1.75rem, 5vw, 3.25rem) 0;
+    }
+
+    .chapter-slide h3 {
+      max-width: 700px;
+      margin: 0 0 1.5rem;
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: -.025em;
+      line-height: 1.15;
+    }
+
+    .chapter-copy {
+      max-width: 690px;
+      color: #505a50;
+      font-size: clamp(1.18rem, 2vw, 1.4rem);
+      line-height: 1.72;
+    }
+
+    .chapter-copy p { margin: 0 0 1.1rem; }
+    .chapter-copy p:last-child { margin-bottom: 0; }
+
+    .chapter-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+    }
+
+    .chapter-button {
+      display: inline-flex;
+      min-height: 2.9rem;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      padding: .6rem .9rem;
+      border: 1px solid rgba(32, 59, 48, .24);
+      background: transparent;
+      color: var(--green);
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: .73rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .chapter-button:hover:not(:disabled) {
+      background: var(--green);
+      color: #fffaf0;
+    }
+
+    .chapter-button:disabled {
+      opacity: .42;
+      cursor: not-allowed;
+    }
+
+    .chapter-dots {
+      display: flex;
+      max-width: 52%;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .chapter-dot {
+      width: .66rem;
+      height: .66rem;
+      padding: 0;
+      border: 1px solid var(--green);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .chapter-dot[aria-current="step"] {
+      background: var(--green);
+      transform: scale(1.22);
+    }
+
+    .chapter-sr-status {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      clip-path: inset(50%);
+    }
+
+    .season-note {
+      max-width: 680px;
+      margin: 3rem auto 0;
+      color: var(--muted);
+      font-size: 1.15rem;
+      text-align: center;
+    }
+
+    .society {
+      position: relative;
+      overflow: hidden;
+      background: var(--green);
+      color: #fffaf0;
+    }
+
+    .society::before {
+      position: absolute;
+      top: -4rem;
+      right: -3rem;
+      color: rgba(225, 201, 143, .08);
+      content: "✦";
+      font-size: 22rem;
+      line-height: 1;
+    }
+
+    .society .section-heading,
+    .society-letter { position: relative; z-index: 1; }
+
+    .society .eyebrow { color: #e1c98f; }
+
+    .society .section-heading p:last-child {
+      color: rgba(255, 250, 240, .73);
+    }
+
+    .society-letter {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(2rem, 6vw, 4.5rem);
+      border: 1px solid rgba(225, 201, 143, .7);
+      outline: 1px solid rgba(225, 201, 143, .35);
+      outline-offset: 7px;
+      background: rgba(255, 250, 240, .04);
+      text-align: center;
+    }
+
+    .society-letter .letter-mark {
+      color: #e1c98f;
+      font-size: 1.7rem;
+      letter-spacing: .5em;
+    }
+
+    .society-letter blockquote {
+      margin: 1.3rem 0;
+      font-size: clamp(1.35rem, 2.7vw, 2rem);
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .society-letter p {
+      margin: 0;
+      color: #e1c98f;
+      font-size: 1.1rem;
+    }
+
+    .gallery { background: var(--paper); }
+
+    .photo-grid {
+      display: grid;
+      max-width: 1200px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 0 auto;
+    }
+
+    .photo-card {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      border: 0;
+      background: var(--paper-deep);
+      cursor: zoom-in;
+      text-align: left;
+    }
+
+    .photo-card:nth-child(7n + 2),
+    .photo-card:nth-child(7n + 5) { transform: translateY(1.25rem); }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      transition: transform .45s ease, filter .45s ease;
+    }
+
+    .photo-card:hover img {
+      filter: saturate(1.08);
+      transform: scale(1.04);
+    }
+
+    .photo-card span {
+      position: absolute;
+      right: .35rem;
+      bottom: .45rem;
+      left: .35rem;
+      padding: 2rem .4rem .3rem;
+      background: linear-gradient(transparent, rgba(20, 32, 26, .38));
+      color: #fffaf0;
+      font-family: var(--sans);
+      font-size: .64rem;
+      letter-spacing: .09em;
+      line-height: 1.3;
+      text-align: center;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, .8);
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    .photo-card:focus-visible { z-index: 1; }
+
+    .motion-memories {
+      display: grid;
+      max-width: 920px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 4rem auto 0;
+    }
+
+    .video-card {
+      min-width: 0;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 248, .72);
+    }
+
+    .video-card .eyebrow {
+      margin: .85rem 0 .2rem;
+      font-size: .58rem;
+      letter-spacing: .11em;
+    }
+
+    .motion-memories video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      max-height: 460px;
+      background: #172922;
+      object-fit: contain;
+    }
+
+    .motion-memories a {
+      display: inline-block;
+      margin-top: .5rem;
+      color: var(--wine);
+      font-size: 1rem;
+    }
+
+    .video-fallback {
+      margin: .7rem 0 0;
+      color: var(--muted);
+      font-size: .96rem;
+    }
+
+    .motion-caption {
+      margin: .45rem 0 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .archive-details {
+      max-width: 760px;
+      margin: 3rem auto 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .archive-details summary {
+      padding: 1rem .2rem;
+      color: var(--green);
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+    }
+
+    .archive-details p,
+    .archive-details ul {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .archive-details ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.25rem;
+      padding-left: 1.2rem;
+    }
+
+    .archive-details a { color: var(--wine); }
+
+    .finale {
+      padding-top: 5.5rem;
+      padding-bottom: 5.5rem;
+      background: #e9e1d2;
+      text-align: center;
+    }
+
+    .finale h2 {
+      margin: .6rem 0 1rem;
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: 1.1;
+    }
+
+    .finale > p:not(.eyebrow) {
+      max-width: 650px;
+      margin: 0 auto 1.6rem;
+      color: #5f665c;
+      font-size: 1.25rem;
+    }
+
+    .signature {
+      color: var(--wine);
+      font-size: 1.55rem;
+      font-style: italic;
+    }
+
+    .site-footer {
+      padding: 1.5rem;
+      background: var(--green-dark);
+      color: rgba(255, 250, 240, .8);
+      font-family: var(--sans);
+      font-size: .66rem;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .lightbox-open { overflow: hidden; }
+
+    #lightbox[open] {
+      position: fixed;
+      z-index: 20;
+      inset: 0;
+      display: grid;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      align-items: center;
+      justify-items: center;
+      margin: 0;
+      padding: clamp(.75rem, 2.5vw, 1.6rem);
+      overflow: hidden;
+      border: 1px solid rgba(225, 201, 143, .7);
+      background: #172922;
+      color: #fffaf0;
+      box-shadow: 0 20px 70px rgba(0, 0, 0, .35);
+    }
+
+    #lightbox::backdrop {
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(201, 168, 107, .1), transparent 58%),
+        rgba(10, 15, 12, .96);
+      backdrop-filter: blur(7px);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      z-index: 1;
+      top: max(.8rem, env(safe-area-inset-top));
+      right: max(.8rem, env(safe-area-inset-right));
+      display: grid;
+      width: 2.7rem;
+      height: 2.7rem;
+      place-items: center;
+      border: 1px solid rgba(255, 250, 240, .5);
+      border-radius: 50%;
+      background: transparent;
+      color: #fffaf0;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 1.3rem;
+      line-height: 1;
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .lightbox-close:hover {
+      border-color: var(--gold);
+      background: rgba(255, 250, 240, .13);
+    }
+
+    .lightbox-image {
+      display: block;
+      max-width: 100%;
+      max-height: calc(100dvh - 5.5rem - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      margin: .7rem 0 0;
+      padding-bottom: env(safe-area-inset-bottom);
+      color: #e1c98f;
+      font-size: 1rem;
+      font-style: italic;
+      text-align: center;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr minmax(210px, .72fr);
+        gap: 1.5rem;
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      .hero h1 { font-size: clamp(3rem, 10vw, 5rem); }
+      .photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .motion-memories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .chapter-dots { gap: .4rem; }
+    }
+
+    @media (max-width: 580px) {
+      body { font-size: 18px; }
+
+      .site-header { padding: 1rem 1.1rem; }
+      .site-nav { gap: .8rem; font-size: .61rem; }
+      .monogram { width: 2.4rem; height: 2.4rem; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 7rem 1.35rem 3.8rem;
+      }
+
+      .hero h1 { max-width: 500px; }
+      .hero-intro { margin-top: 1rem; }
+      .hero-photo { width: min(74%, 310px); }
+      .hero-photo figcaption { font-size: 1.15rem; }
+      .section { padding: 4.5rem 1.25rem; }
+      .section-heading { margin-bottom: 2.5rem; }
+      .chapter-carousel { padding: 1.2rem 1rem; }
+      .chapter-slide { min-height: 400px; padding: 2rem 0; }
+      .chapter-topline { font-size: .58rem; }
+      .chapter-navigation { flex-wrap: wrap; }
+      .chapter-button { padding: .6rem; font-size: .62rem; }
+      .chapter-dots { max-width: 100%; order: -1; width: 100%; }
+      .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+      .photo-card:nth-child(7n + 2),
+      .photo-card:nth-child(7n + 5) { transform: none; }
+      .motion-memories { grid-template-columns: 1fr; margin-top: 3rem; }
+      .society-letter { outline-offset: 4px; }
+      .finale { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+      .lightbox-close {
+        top: max(.6rem, env(safe-area-inset-top));
+        right: max(.6rem, env(safe-area-inset-right));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="monogram" href="#inicio" aria-label="Volver al comienzo">A&nbsp;F</a>
+    <nav class="site-nav" aria-label="Navegación principal">
+      <a href="#historia">La historia</a>
+      <a href="#recuerdos">Recuerdos</a>
+      <a href="#carta">La carta</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio" aria-labelledby="title">
+      <div class="hero-copy">
+        <p class="eyebrow">Edición especial · 31 de octubre de 2026</p>
+        <h1 id="title">Nuestra pequeña <em>historia</em></h1>
+        <p class="hero-intro">La nuestra empezó con una merienda, siguió con unos dorilocos y aquel inolvidable «no te da». Desde entonces, este primer año se fue llenando de Bariloche, flores amarillas, sushi, viajes, aniversarios mensuales y un montón de pequeños momentos que quiero guardar para siempre.</p>
+        <p class="dedication">Para Ana (Lady Ansandri), de su Vizconde Federico.</p>
+        <div class="hero-actions">
+          <a class="button" href="#historia">Abrir este capítulo</a>
+          <a class="button button--quiet" href="Cr%C3%B3nica%20de%20Nuestro%20Primer%20A%C3%B1o.pdf" target="_blank" rel="noopener">Leer la crónica completa</a>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="Multimedia/bariloche-juntos.jpeg" alt="Ana y Federico juntos bajo una cúpula iluminada en Bariloche" fetchpriority="high">
+        <figcaption>Y todavía nos quedan tantos capítulos.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section opening" id="historia" aria-labelledby="opening-title">
+      <div class="section-heading">
+        <p class="eyebrow">Capítulo primero</p>
+        <h2 id="opening-title">Todo empezó sin que lo supiéramos</h2>
+      </div>
+      <div class="opening-copy">
+        <p><span class="first-letter" aria-hidden="true">U</span>n día nos dieron ganas de hacer algo. Estábamos hablando por WhatsApp y organizamos una merienda con Zoe y Pedro. Cuando ellos se fueron, nosotros todavía queríamos quedarnos juntos un rato más.</p>
+        <p>Terminamos en casa preparando unos dorilocos —la receta habrá sido un desastre, pero terminó convertida en nuestro primer gran recuerdo—. Te quedaste a dormir y, desde entonces, empecé a sentirte distinta: ya no eras solamente mi gran amiga. Me gustaba hablarte al levantarme, acostarme en llamada y encontrar cualquier excusa para verte.</p>
+        <p>Nos costaba entender lo que nos estaba pasando a los dos. Empezamos a hacer más cosas juntos, a reírnos solos, hasta que llegó ese día que tanto esperábamos y nos costaba admitir. Te pedí que te callaras; apareció el inolvidable <em>«no te da»</em> y un beso hizo todo lo demás. Ahí empezó una historia que todavía me encanta contar.</p>
+      </div>
+    </section>
+
+    <section class="section story" aria-labelledby="story-title">
+      <div class="section-heading">
+        <p class="eyebrow">Los quince capítulos de la crónica</p>
+        <h2 id="story-title">Los capítulos que nos trajeron hasta acá</h2>
+        <p>Desde los primeros dorilocos hasta el aniversario: cada capítulo sigue el recorrido, los detalles y las salidas que contaste en tu crónica.</p>
+      </div>
+      <div class="chapter-carousel" id="chapter-carousel" aria-label="Recorrido por los capítulos de nuestra historia">
+        <div class="chapter-topline">
+          <span id="chapter-counter">Capítulo 1 de 15</span>
+          <span>El libro de nosotros</span>
+        </div>
+        <article class="chapter-slide" id="chapter-slide" aria-live="polite" aria-atomic="true" tabindex="0">
+          <h3 id="chapter-title"></h3>
+          <div class="chapter-copy" id="chapter-copy"></div>
+        </article>
+        <nav class="chapter-navigation" aria-label="Controles del libro">
+          <button class="chapter-button" id="chapter-previous" type="button" aria-label="Ir al capítulo anterior">
+            <span aria-hidden="true">←</span> Anterior
+          </button>
+          <div class="chapter-dots" id="chapter-dots" aria-label="Elegir capítulo"></div>
+          <button class="chapter-button" id="chapter-next" type="button" aria-label="Ir al capítulo siguiente">
+            Siguiente <span aria-hidden="true">→</span>
+          </button>
+        </nav>
+        <p class="chapter-sr-status" id="chapter-status" aria-live="polite"></p>
+      </div>
+      <p class="season-note">Doce salidas mensuales ya forman parte del álbum. La número trece es la de nuestro aniversario; los capítulos que siguen los escribimos juntos.</p>
+    </section>
+
+    <section class="section society" id="carta" aria-labelledby="society-title">
+      <div class="section-heading">
+        <p class="eyebrow">Comunicado oficial · Sociedad del Ton</p>
+        <h2 id="society-title">Una carta para Lady Ansandri</h2>
+        <p>Con el sello de la casa y el corazón del Vizconde Federico.</p>
+      </div>
+      <div class="society-letter">
+        <div class="letter-mark" aria-hidden="true">✦ &nbsp; ✦ &nbsp; ✦</div>
+        <blockquote>
+          «Mi queridísima Lady Ansandri: se rumorea en todo el ton que mi corazón ya no me pertenece, sino enteramente a usted. Mi afecto no conoce límites y mi admiración es el secreto peor guardado de la temporada. La amo y la quiero con una devoción que las palabras apenas pueden capturar.»
+        </blockquote>
+        <p>Con todo mi amor,<br>tu Vizconde Federico</p>
+      </div>
+    </section>
+
+    <section class="section gallery" id="recuerdos" aria-labelledby="gallery-title">
+      <div class="section-heading">
+        <p class="eyebrow">Nuestro álbum</p>
+        <h2 id="gallery-title">Pequeños instantes, toda una vida</h2>
+        <p>Reuní acá las 52 fotos de nuestro primer año, incluidas las versiones JPG de las imágenes HEIC para poder abrir todo en cualquier navegador. Tocá cualquiera para verla a pantalla completa.</p>
+      </div>
+      <div class="photo-grid" id="photo-grid" aria-live="polite"></div>
+
+      <div class="motion-memories" aria-label="Videos originales">
+        <figure class="video-card">
+          <video controls preload="metadata" playsinline poster="Multimedia/IMG_2049-poster.jpg">
+            <source src="Multimedia/IMG_2049-web.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este video.
+          </video>
+          <figcaption class="eyebrow">Un momento en movimiento</figcaption>
+          <p class="video-fallback">Versión web liviana, preparada para reproducirse en el navegador; el video original también está disponible para descargar.</p>
+          <a href="Multimedia/IMG_2049.MP4" download>Descargar video · MP4 HEVC</a>
+        </figure>
+        <figure class="video-card">
+          <video controls preload="metadata" playsinline poster="Multimedia/IMG_2070-poster.jpg">
+            <source src="Multimedia/IMG_2070-web.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este video.
+          </video>
+          <figcaption class="eyebrow">Otro pedacito de este año</figcaption>
+          <p class="video-fallback">Versión web liviana, preparada para reproducirse en el navegador; el video original también está disponible para descargar.</p>
+          <a href="Multimedia/IMG_2070.MP4" download>Descargar video · MP4 HEVC</a>
+        </figure>
+        <figure class="video-card">
+          <video controls preload="metadata" playsinline poster="Multimedia/IMG_2151-poster.jpg">
+            <source src="Multimedia/IMG_2151-web.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este video.
+          </video>
+          <figcaption class="eyebrow">Un tercer recuerdo</figcaption>
+          <p class="video-fallback">Versión web preparada para el navegador con el audio estéreo original; el MOV conserva también su pista espacial.</p>
+          <a href="Multimedia/IMG_2151.MOV" download>Descargar original MOV · con sonido</a>
+        </figure>
+      </div>
+
+      <details class="archive-details">
+        <summary>Ver también los archivos originales</summary>
+        <p>Las fotos HEIC también tienen una versión JPEG para verlas en cualquier navegador. Acá podés descargar esos originales y el álbum ZIP.</p>
+        <ul>
+          <li><a href="Multimedia/IMG_2049.HEIC" download>IMG_2049.HEIC</a></li>
+          <li><a href="Multimedia/IMG_2070.HEIC" download>IMG_2070.HEIC</a></li>
+          <li><a href="Multimedia/IMG_2082.HEIC" download>IMG_2082.HEIC</a></li>
+          <li><a href="Multimedia/IMG_2089.HEIC" download>IMG_2089.HEIC</a></li>
+          <li><a href="Multimedia/IMG_2132.HEIC" download>IMG_2132.HEIC</a></li>
+          <li><a href="Multimedia/IMG_2151.MOV" download>IMG_2151.MOV</a></li>
+          <li><a href="Multimedia/Photos-1-001.zip" download>Descargar el álbum ZIP</a></li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="section finale" aria-labelledby="finale-title">
+      <p class="eyebrow">Fin del primer libro · No de la historia</p>
+      <h2 id="finale-title">Mi historia favorita<br>siempre va a ser con vos.</h2>
+      <p>Gracias por este año, por cada aventura y por hacer que hasta los días más comunes tengan algo especial. Feliz primer aniversario, mi amor.</p>
+      <p class="signature">Te amo muchísimo.</p>
+      <a class="button" href="Cr%C3%B3nica%20de%20Nuestro%20Primer%20A%C3%B1o.pdf" target="_blank" rel="noopener">Volver a la crónica</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">Un año de nosotros · 31 · 10 · 2026</footer>
+
+  <dialog id="lightbox" aria-label="Foto ampliada">
+    <button class="lightbox-close" type="button" aria-label="Cerrar foto">×</button>
+    <img class="lightbox-image" alt="">
+    <p class="lightbox-caption">Nuestro primer año</p>
+  </dialog>
+
+  <script>
+    const photoFiles = [
+      "bariloche-juntos.jpeg", "1000241576.jpg", "1000241580.jpg", "1000241581.jpg",
+      "1000241582.jpg",
+      "1000257980.jpg", "1000276569.jpg", "1000276625.jpg", "1000276644.jpg",
+      "1000276676.jpg", "1000276713.jpg", "1000276760.jpg", "1000276770.jpg",
+      "1000276908.jpg", "1000276963.jpg", "1000276990.jpg", "1000277070.jpg",
+      "1000277141.jpg", "1000277197.jpg", "1000277251.jpg", "1000280599.jpg",
+      "1000280605.jpg", "1000285267.jpg", "1000293993.jpg", "1000293994.jpg",
+      "1000293995.jpg", "1000294018.jpg", "1000301009.jpg", "1000303361.jpg",
+      "1000303365.jpg", "1000303441.jpg", "1000303706.jpg", "1000303814.jpg",
+      "1000303859.jpg", "1000306254.jpg", "1000306258.jpg", "1000306260.jpg",
+      "1000306264.jpg", "1000306266.jpg", "1000306268.jpg", "1000306270.jpg",
+      "1000306330.jpg", "1000306332.jpg", "1000306336.jpg", "1000308528.jpg",
+      "1000309453.jpg", "1000320814.jpg",
+      "IMG_2049-gallery.jpg", "IMG_2070-gallery.jpg", "IMG_2082-gallery.jpg",
+      "IMG_2089-gallery.jpg", "IMG_2132-gallery.jpg"
+    ];
+
+    const photoGrid = document.querySelector("#photo-grid");
+    const lightbox = document.querySelector("#lightbox");
+    const lightboxImage = lightbox.querySelector(".lightbox-image");
+
+    photoFiles.forEach((filename) => {
+      const imageSource = `Multimedia/${filename}`;
+      const button = document.createElement("button");
+      const image = document.createElement("img");
+      const label = document.createElement("span");
+
+      button.className = "photo-card";
+      button.type = "button";
+      button.setAttribute("aria-label", "Ampliar una foto de nuestro primer año");
+      image.src = imageSource;
+      image.alt = "Una foto de nuestro primer año.";
+      image.loading = "lazy";
+      image.decoding = "async";
+      label.textContent = "Nuestro primer año";
+      button.append(image, label);
+      button.addEventListener("click", () => {
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+        document.documentElement.classList.add("lightbox-open");
+        lightbox.showModal();
+      });
+      photoGrid.append(button);
+    });
+
+    const chapters = [
+      {
+        title: "Inicios, los dorilocos y el «no te da»",
+        paragraphs: [
+          "Un día estábamos aburridos y organizamos una merienda con Zoe, Pedro y Vito. Cuando Zoe y Pedro se fueron porque rendían al día siguiente, todavía teníamos ganas de hacer algo. Viniste a casa, hicimos unos dorilocos —la receta habrá sido un desastre, pero la recuerdo con muchísimo cariño— y te quedaste a dormir.",
+          "Desde entonces empecé a verte distinto. Me gustaba levantarme y hablarte, acostarme en llamada y encontrar cualquier excusa para compartir un rato más. Los dos sentíamos que algo había cambiado, aunque no sabíamos bien qué hacer con eso. Queríamos salir solos, reírnos solos y estirar cada momento.",
+          "Hasta que apareció el famoso «no te da». Te pedí que te callaras, te callé de un beso y empezó una etapa que, sin saberlo todavía, iba a convertirse en mi historia favorita."
+        ]
+      },
+      {
+        title: "Preparativos y el viaje a Bariloche",
+        paragraphs: [
+          "Antes del viaje hicimos un montón de preparativos juntos: vos me ayudaste con el jean para la flúo, yo hice las alas para el disfraz y dormíamos siestas entre una cosa y otra. Nos movíamos como si ya supiéramos cómo acompañarnos.",
+          "En casa me retaban porque yo tenía que ponerme las pilas con los disfraces y siempre dejaba todo para último momento. Pero, cuando finalmente llegó el viaje, yo estaba pensando más en vos que en Bariloche.",
+          "Queríamos intentar estar juntos sin que nadie se diera cuenta. Solo Zoe y Pedro sabían que podíamos jugarnos una amistad de cuatro años por un beso. Lo negábamos, pero estábamos todo el día juntos; el viaje no iba a cambiar nada de eso."
+        ]
+      },
+      {
+        title: "Los boliches de BRC",
+        paragraphs: [
+          "Antes de que saliera el micro nos íbamos a nuestro cuarto para sacarnos una foto juntos. Durante el viaje no sobraban los momentos a solas, así que los cuidábamos como podíamos.",
+          "En los boliches yo estaba pegado a vos, pero nunca encontraba la manera de darte un beso porque siempre había alguien al lado. A veces tratábamos de escaparnos y Toto no entendía una; terminábamos volviendo temprano.",
+          "Todos pensaban que nos volvíamos por alguna otra razón. La verdad era que llegábamos, poníamos TikTok y nos dormíamos juntos. Mis recuerdos de esos boliches siempre son con vos ahí; y también con Zoe haciéndonos de guardia cuando nos dejaba un momento para estar juntos."
+        ]
+      },
+      {
+        title: "Los días en BRC, Mamushka y el primer anillo",
+        paragraphs: [
+          "Recorríamos Bariloche todos los días. A veces con los chicos y otras veces los dos solos; casi nunca salía del hotel sin vos. Cada paseo y cada excursión se volvían parte de nuestra historia.",
+          "Me acuerdo de contarle a Mica en una heladería rara, mientras vos probabas unos bombones de chocolate. Te daba un poco de cosa contarlo y, de repente, nos dimos un beso. Ella se quedó sin saber qué decir.",
+          "También está el primer anillo: en la feria le pasé la plata a Zoe porque vos sospechabas que quería comprártelo. Y ese pico en Mamushka, cuando Cacase y Toto nos vieron y después vos lo convenciste de que había imaginado todo. Qué lindo viaje me hiciste pasar; no me imagino haberlo vivido de otra manera."
+        ]
+      },
+      {
+        title: "Día de la Primavera, flores amarillas y Plaza Francia",
+        paragraphs: [
+          "Estaba nervioso cuando preparé tus flores amarillas en casa. Hice algunos desastres, recorrí un montón buscando Franuis y al final igual conseguí que el ramo estuviera listo. Era la primera vez que le regalaba flores a alguien.",
+          "También llegaron los anillos: te compré tres más y verte tan contenta me alcanzó para que toda la salida valiera la pena. Después invitaste una Tasty porque te daba cosa que yo hubiera pagado los regalos.",
+          "Paseamos por Plaza Francia, esa feria que te encantó y que a mí me quedó grabada. Fue nuestra primera salida planeada con tanto cariño y mi primer regalo tan pensado para alguien. Ver cómo se te iluminaba la cara con tus regalos me hacía sonreír solo."
+        ]
+      },
+      {
+        title: "El ramo de Hot Wheels y nuestras saliditas random",
+        paragraphs: [
+          "El ramo de Hot Wheels fue el primer regalo que me hiciste. Te inventaste una historia para averiguar qué auto me gustaba; yo no pensé que fueras a descubrirlo, pero lo hiciste y me cerraste la boca. Todavía guardo el ramo y el Hot Wheels; lo demás, me lo comí.",
+          "Después empezaron las saliditas random y la costumbre de organizar algo distinto, ya fuera el plan del mes o una salida espontánea. Vos sabés disfrutar cualquier lugar: un parque, una excursión, una cena elegante o un bodegón.",
+          "Me acuerdo especialmente de la Costanera de Vicente López. Fuimos a un parque sin demasiado plan, casi sin gastar plata, y la pasamos increíble. Con vos, incluso algo improvisado se convierte en un recuerdo que quiero guardar."
+        ]
+      },
+      {
+        title: "El primer viaje a la Costa con mi familia",
+        paragraphs: [
+          "El cumpleaños de mi papá fue la ocasión del primer viaje a la Costa con mi familia. Me invitaron y compartimos esos días entre comidas, asaditos, paseos y un montón de pavadas juntos.",
+          "También me quedó algo más importante que las fotos: desde que estás conmigo siento que me llevo mejor con mi familia y que puedo ser un poco más familiero, sin discutir por cualquier cosa.",
+          "Fue lindo ver que podías estar ahí, compartir con todos y hacerte un lugar en mis días de siempre. Ese viaje se volvió parte de nosotros."
+        ]
+      },
+      {
+        title: "Novios al fin: sushi, burgas y el pacto de las 13 salidas",
+        paragraphs: [
+          "En esa salida me puse más nervioso que nunca. Desde el principio sabía que quería ser tu novio, pero no encontraba cómo pedirlo. Mi mamá y mi hermana me ayudaron a preparar la sorpresa; el Waze casi me la arruina.",
+          "Comimos sushi y burgas. Me encantó que me dijeras que sí y que ese fuera el comienzo oficial de nuestra relación. También hicimos nuestro pacto: una salida especial por mes, alternándonos para planearla.",
+          "Entre todas esas salidas fuimos a Frank's Grill y al cine a ver Zootopia. En El Ateneo, rodeados de libros, nos dimos nuestro primer beso en público y el corazón me latió más fuerte de lo normal. A lo largo del año completamos doce salidas; la número trece queda reservada para este aniversario."
+        ]
+      },
+      {
+        title: "Octubre a diciembre: Napoli, el primer buzo y la graduación",
+        paragraphs: [
+          "En octubre te acompañaba mucho a Napoli y te presté mi buzo por primera vez; lo usabas siempre. También empezaba a manejar después de haber sacado el registro, y me gustaba poder acompañarte a los lugares que necesitabas.",
+          "Noviembre llegó con el estrés de terminar el colegio y con los preparativos de nuestras graduaciones. Yo buscaba mi traje y vos me escondías el vestido. No supe cómo era hasta que por fin llegó diciembre.",
+          "Ese día apareciste con un vestido verde hermoso. Terminaba una etapa del colegio y también empezaba otra en nuestras vidas. Estoy orgulloso de que hayas hecho medio CBC mientras aprobabas todo en la técnica, y de cada cosa que seguís logrando."
+        ]
+      },
+      {
+        title: "Verano y febrero: patinaje, San Valentín y tu barrio",
+        paragraphs: [
+          "Después de fin de año empezamos a vernos todavía más. En febrero, para tu salida del mes, me llevaste a patinar sobre hielo. Y el 14 de febrero armé mi primera página estilo Bridgerton para San Valentín y te invité a comer sushi a Fabric. Te encantó conocer un lugar así.",
+          "Ese día te escribí como si toda la Sociedad del Ton ya supiera mi secreto: que mi corazón no me pertenecía y quería preguntarte si querías ser mi San Valentín. Tu «sí» convirtió al Vizconde Federico en el hombre más afortunado del reino.",
+          "El 26 de febrero conocí tu casa del barrio, te acompañé a la Universidad Austral que tenías tantas ganas de conocer, fuimos a Las Palmas y compartimos compras y una milanesa gigante. Una salida tras otra terminaba siendo una excusa para seguir juntos."
+        ]
+      },
+      {
+        title: "Marzo: tus 19 años, la torta y los primeros trabajitos",
+        paragraphs: [
+          "El 8 de marzo cumpliste 19. Para tu cumpleaños hice una torta que te encantó y te preparé un libro digital para dejarte escrito cuánto te admiro.",
+          "Quiero acompañarte en cada etapa: cuando te recibas, cuando apruebes o desapruebes, cuando estés cansada y cuando vuelvas a levantarte. Me gusta todo lo que sos: lo inteligente, divertida y linda que sos conmigo.",
+          "Ese mes también empecé a encontrar trabajitos para cubrir gastos y poder regalarte cositas. Empezamos a buscarnos más, a dormir juntos seguido y a compartir mucho más del día. Mi futura cirujana, qué orgullo me da verte avanzar."
+        ]
+      },
+      {
+        title: "Abril: Paloco, Bariloche y mi cumpleaños",
+        paragraphs: [
+          "En abril planeaste una de nuestras salidas y me llevaste a Paloco. Después viajamos otra vez a Bariloche, esta vez con mi familia: salíamos todos los días, dormíamos juntos y pasábamos el tiempo haciendo cualquier cosa.",
+          "El 24 de abril celebré mi cumpleaños en lo de mi tío y conociste a mis primitos más chiquitos. Me dio mucha alegría ver lo bien que te llevaste con ellos desde el primer momento.",
+          "Después festejamos en casa y me regalaste los pijamas de Cars. Entre las vacaciones, la familia y las celebraciones, abril quedó lleno de recuerdos nuestros."
+        ]
+      },
+      {
+        title: "Invierno, junio y julio: parciales, gimnasio y el Libro Encantado",
+        paragraphs: [
+          "Llegó la época de los parciales y a los dos se nos empezaron a achicar los días. En junio empezamos a ir juntos al gimnasio, aunque las salidas se hicieran más tranquilas porque estábamos ocupados con la facultad.",
+          "También conseguí un trabajo y volvimos a salir un poquito más. El 31 de julio te llevé a comer sushi libre a Sushi /Oi Saavedra y preparé una nueva página para vos: El Libro Encantado de los Secretos Olvidados.",
+          "Allí te esperaba un prólogo y cinco pruebas. La última sorpresa recordaba lo que ya sabía desde el principio: que el encanto no estaba en ningún hechizo, sino en compartir todo eso con vos."
+        ]
+      },
+      {
+        title: "Agosto y septiembre: juegos, una operación y ramen en el Barrio Chino",
+        paragraphs: [
+          "Después de tantas semanas ocupadas empezamos a jugar juntos en casa y nos regalamos un descansito entre estudio y estudio. También empezó una etapa en la que tenerte cerca significó muchísimo.",
+          "El 10 de septiembre me operaron y me acompañaste en todo momento. Que estuvieras conmigo esos días es una de las maneras en que más siento lo que significa cuidarnos.",
+          "El 26 de septiembre paseamos por el Barrio Chino y te invité a comer tu ramen favorito. Sin darnos cuenta, ya estábamos preparando la salida número trece y el primer aniversario."
+        ]
+      },
+      {
+        title: "El Libro Encantado y sus cinco pruebas secretas",
+        paragraphs: [
+          "Para la cita de sushi libre del 31 de julio de 2026 preparé otro regalo: una aventura con cinco pruebas, cartas y un secreto al final. Cada respuesta estaba escondida en recuerdos que ya eran nuestros.",
+          "La bondad que tanto te caracteriza, la cena en que te pedí que fueras mi novia, tus ojos y aquel primer beso en público entre libros en El Ateneo eran algunas de las pistas.",
+          "La última respuesta no necesitaba lógica ni un conjuro. El libro preguntaba qué frase abriría una puerta imposible y vos ya tenías la única respuesta que importaba: «sos el amor de mi vida»."
+        ],
+        riddles: [
+          { question: "«No llevo capa, pero aparezco cuando alguien me necesita. Tengo tu carisma y tu forma de abrazar a todos. ¿Qué soy?»", answer: "Bondad" },
+          { question: "«Hubo una noche de nervios, risas y miradas que no se olvidan. Entre sabores del mar, te pedí que fueras mi novia. ¿Qué soy?»", answer: "Sushi burgas" },
+          { question: "«No es un hechizo, pero me deja sin palabras. Es lo primero que busco cuando te miro. ¿Qué soy?»", answer: "Ojos" },
+          { question: "«Fue una salida distinta, con libros alrededor y el corazón latiendo fuerte. Ahí vivimos nuestro primer beso en público. ¿Qué soy?»", answer: "El Ateneo" },
+          { question: "«Si una sombra pudiera cantar, y el reloj caminara para atrás, ¿qué frase abriría la puerta que no existe? Pista: no busques lógica, busca verdad. ¿Qué son?»", answer: "Sos el amor de mi vida" }
+        ]
+      }
+    ];
+
+    const chapterTitle = document.querySelector("#chapter-title");
+    const chapterCopy = document.querySelector("#chapter-copy");
+    const chapterCounter = document.querySelector("#chapter-counter");
+    const chapterDots = document.querySelector("#chapter-dots");
+    const chapterStatus = document.querySelector("#chapter-status");
+    const previousChapter = document.querySelector("#chapter-previous");
+    const nextChapter = document.querySelector("#chapter-next");
+    let activeChapter = 0;
+
+    const chapterButtons = chapters.map((chapter, index) => {
+      const button = document.createElement("button");
+      button.className = "chapter-dot";
+      button.type = "button";
+      button.setAttribute("aria-label", `Ir al capítulo ${index + 1}: ${chapter.title}`);
+      button.title = chapter.title;
+      button.addEventListener("click", () => showChapter(index));
+      chapterDots.append(button);
+      return button;
+    });
+
+    function showChapter(index) {
+      activeChapter = Math.max(0, Math.min(chapters.length - 1, index));
+      const chapter = chapters[activeChapter];
+      chapterTitle.textContent = chapter.title;
+      chapterCopy.replaceChildren();
+
+      chapter.paragraphs.forEach((text) => {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = text;
+        chapterCopy.append(paragraph);
+      });
+
+      if (chapter.riddles) {
+        const details = document.createElement("details");
+        const summary = document.createElement("summary");
+        const list = document.createElement("ol");
+
+        details.className = "archive-details";
+        details.style.margin = "1.5rem 0 0";
+        summary.textContent = "Leer los cinco acertijos y sus respuestas";
+        details.append(summary);
+        chapter.riddles.forEach(({ question, answer }) => {
+          const item = document.createElement("li");
+          item.textContent = `${question} Respuesta: ${answer}.`;
+          list.append(item);
+        });
+        details.append(list);
+        chapterCopy.append(details);
+      }
+
+      chapterCounter.textContent = `Capítulo ${activeChapter + 1} de ${chapters.length}`;
+      chapterStatus.textContent = `${chapterCounter.textContent}: ${chapter.title}`;
+      previousChapter.disabled = activeChapter === 0;
+      nextChapter.disabled = activeChapter === chapters.length - 1;
+      chapterButtons.forEach((button, buttonIndex) => {
+        if (buttonIndex === activeChapter) {
+          button.setAttribute("aria-current", "step");
+        } else {
+          button.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    previousChapter.addEventListener("click", () => showChapter(activeChapter - 1));
+    nextChapter.addEventListener("click", () => showChapter(activeChapter + 1));
+    document.querySelector("#chapter-carousel").addEventListener("keydown", (event) => {
+      if (event.target.closest("button, summary")) return;
+      if (event.key === "ArrowLeft" && activeChapter > 0) {
+        event.preventDefault();
+        showChapter(activeChapter - 1);
+      }
+      if (event.key === "ArrowRight" && activeChapter < chapters.length - 1) {
+        event.preventDefault();
+        showChapter(activeChapter + 1);
+      }
+    });
+    showChapter(0);
+
+    lightbox.querySelector(".lightbox-close").addEventListener("click", () => lightbox.close());
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) lightbox.close();
+    });
+    lightbox.addEventListener("close", () => {
+      lightboxImage.removeAttribute("src");
+      document.documentElement.classList.remove("lightbox-open");
+    });
+  </script>
+</body>
+</html>

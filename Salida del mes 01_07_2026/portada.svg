@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title description">
+  <title id="title">El Libro Encantado</title>
+  <desc id="description">Un libro mágico abierto bajo un cielo nocturno lleno de estrellas.</desc>
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="35%" r="80%">
+      <stop stop-color="#31466a"/>
+      <stop offset=".58" stop-color="#151b30"/>
+      <stop offset="1" stop-color="#080a12"/>
+    </radialGradient>
+    <linearGradient id="page" x2="0" y2="1">
+      <stop stop-color="#f3dfaa"/>
+      <stop offset="1" stop-color="#ba9350"/>
+    </linearGradient>
+    <linearGradient id="book" x2="0" y2="1">
+      <stop stop-color="#426150"/>
+      <stop offset="1" stop-color="#142d2a"/>
+    </linearGradient>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="16" stdDeviation="15" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="960" height="600" fill="url(#sky)"/>
+  <path d="M0 462q235-55 480 0t480 0v138H0z" fill="#0b1018"/>
+  <g fill="#f3d996" filter="url(#glow)">
+    <path d="M128 99l5 14 14 5-14 5-5 14-5-14-14-5 14-5z"/>
+    <path d="M806 119l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/>
+    <path d="M739 223l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
+  </g>
+  <g fill="#f8edcc" opacity=".8">
+    <circle cx="215" cy="183" r="2"/><circle cx="325" cy="85" r="2"/><circle cx="640" cy="98" r="2"/>
+    <circle cx="849" cy="286" r="2"/><circle cx="151" cy="277" r="2"/><circle cx="572" cy="192" r="2"/>
+    <circle cx="374" cy="237" r="2"/><circle cx="767" cy="74" r="2"/><circle cx="264" cy="327" r="2"/>
+  </g>
+  <text x="480" y="111" fill="#e8d19b" font-family="Georgia,serif" font-size="19" letter-spacing="9" text-anchor="middle">UNA AVENTURA PARA ANA</text>
+  <text x="480" y="174" fill="#f6e8c5" font-family="Georgia,serif" font-size="50" letter-spacing="5" text-anchor="middle">EL LIBRO ENCANTADO</text>
+  <text x="480" y="213" fill="#d5bd8c" font-family="Georgia,serif" font-size="24" font-style="italic" text-anchor="middle">de los Secretos Olvidados</text>
+  <g filter="url(#shadow)">
+    <path d="M286 300q93-47 194 6v173q-102-53-194-5z" fill="url(#book)" stroke="#d7b167" stroke-width="4"/>
+    <path d="M480 306q100-53 194-6v174q-92-48-194 5z" fill="#f0dfb8" stroke="#d7b167" stroke-width="4"/>
+    <path d="M480 306v173" stroke="#af8b4e" stroke-width="4"/>
+    <path d="M310 323q76-32 145 0M310 351q76-32 145 0M310 379q76-32 145 0M310 407q76-32 145 0M505 323q74-34 146 0M505 351q74-34 146 0M505 379q74-34 146 0M505 407q74-34 146 0" fill="none" stroke="#b48b50" stroke-opacity=".55" stroke-width="2"/>
+    <path d="M385 274l95-31 95 31-95 34z" fill="#dfc37c" stroke="#f5e1a9" stroke-width="3"/>
+    <path d="M480 248v41" stroke="#fff1bc" stroke-width="3"/>
+    <path d="M480 253l5 14 14 5-14 5-5 14-5-14-14-5 14-5z" fill="#fff2bc"/>
+  </g>
+  <text x="480" y="542" fill="#dfc37c" font-family="Georgia,serif" font-size="19" letter-spacing="5" text-anchor="middle">✦  ABRÍ EL LIBRO. DESCUBRÍ LA MAGIA.  ✦</text>
+</svg>

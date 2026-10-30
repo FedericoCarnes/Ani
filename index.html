@@ -272,9 +272,10 @@ const librosPorPagina = 4;
 let paginaActual = 1;
 
 const carpetas = [
-  { path: 'Carta de San Valentin 14_02_26', fecha: '14_02_26' },
-  { path: 'Libro de recuerdos 08_03_26', fecha: '08_03_26' },
-  { path: 'Salida del mes 01_07_2026', fecha: '31_07_26' }
+  { path: 'Carta de San Valentin 14_02_26', fecha: '14_02_26', portada: 'Carta de San Valentin 14_02_26/portada.svg' },
+  { path: 'Libro de recuerdos 08_03_26', fecha: '08_03_26', portada: 'Libro de recuerdos 08_03_26/Multimedia/graduacion.jpeg' },
+  { path: 'Salida del mes 01_07_2026', fecha: '31_07_26', portada: 'Salida del mes 01_07_2026/portada.svg' },
+  { path: 'Aniversario 31_10_26', fecha: '31_10_26' }
 ];
 
 function fechasCercanas(){
@@ -377,7 +378,7 @@ function renderLibros(){
     div.onclick=()=>window.location.href=indexPath;
 
     div.innerHTML=`
-      <img src="${carpeta.path}/portada.jpg" 
+      <img src="${carpeta.portada || `${carpeta.path}/portada.jpg`}"
            onerror="this.src='https://picsum.photos/300/200?grayscale'">
       <div class="libro-title">${carpeta.titulo}</div>
       <div class="libro-path">${carpeta.path}</div>
